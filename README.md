@@ -38,7 +38,7 @@ Akzent für Icon/Text, beim Hover leichter Glow.
 | `discord/`    | Discord (BetterDiscord) | `Aurora.theme.css` nach `%APPDATA%\BetterDiscord\themes`, Variante oben in der Datei |
 | `vscode/`     | VS Code    | `node build.js`, `npx @vscode/vsce package --allow-missing-repository --skip-license`, `code --install-extension aurora-theme-1.0.0.vsix` |
 | `raycast/`    | Raycast (Pro) | Import-Link aus [raycast/links.md](raycast/links.md) öffnen |
-| `windows/` (Stufe 2) | Windhawk | Mods *Windows 11 Taskbar / Start Menu / File Explorer / Notification Center Styler* installieren, dann `.\windows\windhawk.ps1 -Variant ice` (UAC) |
+| `windows/` (Stufe 2) | Windhawk | Mods *Windows 11 Taskbar / Start Menu / File Explorer / Settings / Notification Center Styler* installieren, dann `.\windows\windhawk.ps1 -Variant ice` (UAC) |
 | `windows/` (Explorer-Flächen) | Windhawk, lokaler Mod | `node windows\build-modernizer.js` erzeugt *Win32 UI Modernizer (Aurora)*; in Windhawk „Neuen Mod erstellen“, Inhalt einfügen, kompilieren – Einstellungen setzt `windhawk.ps1` |
 | `windows/` (Hintergrund) | Mica-Tönung | `.\windows\wallpaper.ps1 -Variant ice` – dunkles Aurora-Bild als Windows-Hintergrund (liegt unter Lively), Backup in `windows\backup` |
 | `windows/`    | Windows 11 | `.\windows\apply.ps1 -Variant ice` (Dark Mode + Akzent, Backup in `windows\backup`), zurück mit `restore.ps1` |

@@ -113,6 +113,30 @@ $mods = [ordered]@{
                s = @("Fill:=$(& $tint 0.16)") }
         )
     }
+    # Farbregeln aus dem eingebauten OLED-Theme des Mods, ohne dessen Layout-Umbau
+    'windows-11-settings-styler' = @{
+        controlStyles = @(
+            @{ t = 'Windows.UI.Xaml.Controls.Grid#RootPageGrid'; s = @('Background=#0A0C12') }
+            @{ t = 'SystemSettings.View.RootPage'; s = @('Background=Transparent') }
+            # Karten der Startseite und Einstellungszeilen
+            @{ t = 'ContentControl#GridViewItemContentControl > ContentPresenter > Grid'; s = @('Background=#12151E') }
+            @{ t = 'SystemSettings.View.ButtonEntityItem > Button#ContainerButton > ContentPresenter#ContentPresenter'; s = @('Background=#12151E') }
+            @{ t = 'Microsoft.ReactNative.ReactRootView > Microsoft.ReactNative.ViewPanel > Microsoft.ReactNative.ViewPanel > Microsoft.ReactNative.ViewPanel > Microsoft.ReactNative.ViewPanel > Border'
+               s = @('Background=#12151E') }
+            @{ t = 'Windows.UI.Xaml.Controls.Primitives.ListViewItemPresenter > Border'; s = @('Background=Transparent') }
+            @{ t = 'SystemSettings.View.AlignableContentControl > ContentPresenter > Grid > SystemSettings.View.AlignableContentControl > ContentPresenter > SystemSettings.View.WatermarkTextBox > Grid > Border#BorderElement'
+               s = @('Background=#06070B') }
+            # Buttons und Auswahlfelder invertiert: dunkel, Akzent-Rand und -Text
+            @{ t = 'ContentPresenter#InlineContentPresenter > Button > ContentPresenter#ContentPresenter'
+               s = @('Background=#0A0C12', "BorderBrush:=$(& $tint 0.45)", "Foreground:=<SolidColorBrush Color=`"$A`"/>") }
+            @{ t = 'SystemSettings.View.StableComboBox > Grid#LayoutRoot > Border#Background'
+               s = @('Background=#0A0C12', "BorderBrush:=$(& $tint 0.45)") }
+            @{ t = 'HyperlinkButton > ContentPresenter#ContentPresenter'
+               s = @("Foreground:=<SolidColorBrush Color=`"$B`"/>") }
+            # Sekundaertext wie in Aurora
+            @{ t = 'ContentPresenter#SubtitleContent > TextBlock'; s = @('Foreground=#8A96AB') }
+        )
+    }
     'windows-11-notification-center-styler' = @{
         controlStyles = @(
             @{ t = 'Grid#NotificationCenterGrid, Grid#CalendarCenterGrid, Grid#ControlCenterRegion, Windows.UI.Xaml.Controls.Grid#MediaTransportControlsRegion, Border#JumpListRestyledAcrylic'
