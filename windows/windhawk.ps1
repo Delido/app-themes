@@ -96,6 +96,7 @@ $mods = [ordered]@{
     'windows-11-file-explorer-styler' = @{
         # Mica nur im Kopfbereich (Tabs, Adresse, Befehlsleiste). Ueber das ganze Fenster wurden
         # Navigation und Dateiliste auf Build 26300 heller grau (#3a3a3e) statt dunkler.
+        # (micaAlt ueber das ganze Fenster: ebenfalls hellgrau)
         backgroundTranslucentEffect = 'mica'
         backgroundTranslucentEffectRegion = 'explorerFrame'
         controlStyles = @(
