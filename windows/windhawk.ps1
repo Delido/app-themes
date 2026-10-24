@@ -121,7 +121,36 @@ $mods = [ordered]@{
     }
 }
 
+# Lokaler Mod aus build-modernizer.js: nur einzelne Werte setzen, Rest bleibt wie in Windhawk
+$partial = [ordered]@{
+    'local@win32-ui-modernizer-aurora' = [ordered]@{
+        'GeneralSection.EnableDarkMode'         = 1
+        'GeneralSection.CustomAccentColor'      = $A
+        'GeneralSection.AccentGradients'        = 1
+        'ExplorerSection.ExplorerMicaBackdrop'  = 'opaque'   # Liste/Navigation deckend in Aurora-Flaechen
+    }
+}
+
 $root = 'HKLM:\SOFTWARE\Windhawk\Engine\Mods'
+
+function Update-SettingsChangeTime($modKey) {
+    # Engine benachrichtigen: SettingsChangeTime muss sich aendern
+    $old = (Get-ItemProperty $modKey -Name SettingsChangeTime -ErrorAction SilentlyContinue).SettingsChangeTime
+    $stamp = [int]([DateTimeOffset]::UtcNow.ToUnixTimeSeconds() -band 0x7FFFFFFF)
+    if ($old -and $stamp -le $old) { $stamp = $old + 1 }
+    New-ItemProperty $modKey 'SettingsChangeTime' -Value $stamp -PropertyType DWord -Force | Out-Null
+}
+
+foreach ($id in $partial.Keys) {
+    $modKey = Join-Path $root $id
+    if (-not (Test-Path "$modKey\Settings")) { Write-Host "uebersprungen (nicht installiert): $id"; continue }
+    foreach ($e in $partial[$id].GetEnumerator()) {
+        $type = if ($e.Value -is [int]) { 'DWord' } else { 'String' }
+        New-ItemProperty "$modKey\Settings" $e.Key -Value $e.Value -PropertyType $type -Force | Out-Null
+    }
+    Update-SettingsChangeTime $modKey
+    Write-Host "gesetzt: $id ($($partial[$id].Count) Werte, Variante $Variant)"
+}
 foreach ($id in $mods.Keys) {
     $modKey = Join-Path $root $id
     if (-not (Test-Path $modKey)) { Write-Host "uebersprungen (nicht installiert): $id"; continue }
@@ -144,11 +173,7 @@ foreach ($id in $mods.Keys) {
         }
     }
 
-    # Engine benachrichtigen: SettingsChangeTime muss sich aendern
-    $old = (Get-ItemProperty $modKey -Name SettingsChangeTime -ErrorAction SilentlyContinue).SettingsChangeTime
-    $stamp = [int]([DateTimeOffset]::UtcNow.ToUnixTimeSeconds() -band 0x7FFFFFFF)
-    if ($old -and $stamp -le $old) { $stamp = $old + 1 }
-    New-ItemProperty $modKey 'SettingsChangeTime' -Value $stamp -PropertyType DWord -Force | Out-Null
+    Update-SettingsChangeTime $modKey
     Write-Host "gesetzt: $id ($($cfg.controlStyles.Count) Regeln, Variante $Variant)"
 }
 if ($LogPath) { Stop-Transcript | Out-Null }

@@ -1,6 +1,8 @@
 # Persoenliche Sicherung von windows/apply.ps1 + wallpaper.ps1, erzeugte Hintergruende
 windows/backup/
 windows/aurora-*-wallpaper.png
+# Von windows/build-modernizer.js aus dem Upstream-Mod erzeugt
+windows/win32-ui-modernizer-aurora.wh.cpp
 
 # Von steam/build.js aus Steams CSS generiert - lokal neu bauen
 steam/libraryroot.custom.css
