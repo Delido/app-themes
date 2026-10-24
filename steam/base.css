@@ -1,0 +1,72 @@
+/* ==========================================================
+   Nocturne - Basis (handgeschrieben, wird vor die generierten Overrides gesetzt)
+   Die --nc-* Farben setzt build.js passend zur gewaehlten Aurora-Variante.
+   ========================================================== */
+
+html, body {
+  background: var(--nc-bg0) !important;
+  color: var(--nc-text);
+  font-family: var(--nc-font) !important;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Feiner Aurora-Schimmer an der Oberkante */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--nc-accent), var(--nc-accent-b), transparent);
+  opacity: .7;
+  pointer-events: none;
+  z-index: 99999;
+}
+
+::selection { background: var(--nc-accent); color: var(--nc-bg0); }
+
+/* Schlanke Scrollbars */
+::-webkit-scrollbar { width: 8px; height: 8px; background: transparent; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: var(--nc-line);
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:hover { background-color: var(--nc-accent-deep); }
+::-webkit-scrollbar-corner { background: transparent; }
+
+/* Eingabefelder */
+input, textarea, select {
+  background: var(--nc-bg1) !important;
+  color: var(--nc-text) !important;
+  border: 1px solid var(--nc-line) !important;
+  border-radius: 8px !important;
+  transition: border-color .15s, box-shadow .15s;
+}
+input:focus, textarea:focus, select:focus {
+  outline: none !important;
+  border-color: var(--nc-accent-deep) !important;
+  box-shadow: 0 0 0 3px var(--nc-accent-18) !important;
+}
+
+/* Tastatur-Fokus: dezenter Ring in Akzentfarbe */
+:focus-visible {
+  outline: 1px solid var(--nc-accent) !important;
+  outline-offset: 2px;
+}
+
+a { color: var(--nc-accent); }
+a:hover { color: var(--nc-accent-hi); }
+
+/* Spielkacheln leicht abrunden */
+img[src*="library_600x900"],
+img[src*="/header"],
+img[src*="capsule"] {
+  border-radius: 6px;
+}
+
+/* Sanfte Uebergaenge */
+button, [role="button"], [role="link"] {
+  transition: background-color .15s ease, color .15s ease, filter .15s ease;
+}

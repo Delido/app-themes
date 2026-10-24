@@ -1,0 +1,89 @@
+{
+  "name": "Aurora",
+  "description": "A clean deep-space theme: near-black glass surfaces, soft aurora gradients, rounded pills and glowing speaker rings. Bookmark tiles, live speaker glow. Five accents, each also as Classic.",
+  "version": "1.1.0",
+  "identifier": "com.mendyka.aurora",
+  "engines": {
+    "teamspeak": 1
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/smendyka/teamspeak-aurora"
+  },
+  "image": "preview.svg",
+  "license": "MIT",
+  "author": {
+    "name": "Sebastian Mendyka"
+  },
+  "keywords": [
+    "dark",
+    "clean",
+    "gradient",
+    "glass",
+    "minimal"
+  ],
+  "content": {
+    "themes": [
+      {
+        "name": "Aurora Violet",
+        "source": "aurora-violet.css",
+        "image": "aurora-violet.svg",
+        "apiVersion": 1
+      },
+      {
+        "name": "Aurora Ice",
+        "source": "aurora-ice.css",
+        "image": "aurora-ice.svg",
+        "apiVersion": 1
+      },
+      {
+        "name": "Aurora Mint",
+        "source": "aurora-mint.css",
+        "image": "aurora-mint.svg",
+        "apiVersion": 1
+      },
+      {
+        "name": "Aurora Ember",
+        "source": "aurora-ember.css",
+        "image": "aurora-ember.svg",
+        "apiVersion": 1
+      },
+      {
+        "name": "Aurora Rose",
+        "source": "aurora-rose.css",
+        "image": "aurora-rose.svg",
+        "apiVersion": 1
+      },
+      {
+        "name": "Aurora Violet Classic",
+        "source": "aurora-violet-classic.css",
+        "image": "aurora-violet.svg",
+        "apiVersion": 1
+      },
+      {
+        "name": "Aurora Ice Classic",
+        "source": "aurora-ice-classic.css",
+        "image": "aurora-ice.svg",
+        "apiVersion": 1
+      },
+      {
+        "name": "Aurora Mint Classic",
+        "source": "aurora-mint-classic.css",
+        "image": "aurora-mint.svg",
+        "apiVersion": 1
+      },
+      {
+        "name": "Aurora Ember Classic",
+        "source": "aurora-ember-classic.css",
+        "image": "aurora-ember.svg",
+        "apiVersion": 1
+      },
+      {
+        "name": "Aurora Rose Classic",
+        "source": "aurora-rose-classic.css",
+        "image": "aurora-rose.svg",
+        "apiVersion": 1
+      }
+    ]
+  }
+}

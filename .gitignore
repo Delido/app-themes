@@ -1,0 +1,11 @@
+# Persoenliche Registry-Sicherung von windows/apply.ps1
+windows/backup/
+
+# Von steam/build.js aus Steams CSS generiert - lokal neu bauen
+steam/libraryroot.custom.css
+steam/friends.custom.css
+steam/webkit.css
+
+# VS-Code-Paket
+*.vsix
+node_modules/

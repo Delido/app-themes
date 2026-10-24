@@ -1,0 +1,8 @@
+{
+  "name": "Nocturne",
+  "description": "Deep-Space-Schwarz mit Aurora-Verlauf, passend zum TeamSpeak-Theme Aurora.",
+  "author": "Sebastian Mendyka",
+  "version": "1.3.0",
+  "tags": ["Dark", "Minimal", "Aurora"],
+  "UseDefaultPatches": true
+}

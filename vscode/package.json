@@ -1,0 +1,23 @@
+{
+  "name": "aurora-theme",
+  "displayName": "Aurora",
+  "description": "Deep-Space-Schwarz mit Aurora-Akzent - passend zum TeamSpeak-Theme Aurora.",
+  "version": "1.0.0",
+  "publisher": "mendyka",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "contributes": {
+    "themes": [
+      { "label": "Aurora Ice", "uiTheme": "vs-dark", "path": "./themes/aurora-ice-color-theme.json" },
+      { "label": "Aurora Mint", "uiTheme": "vs-dark", "path": "./themes/aurora-mint-color-theme.json" },
+      { "label": "Aurora Violet", "uiTheme": "vs-dark", "path": "./themes/aurora-violet-color-theme.json" },
+      { "label": "Aurora Ember", "uiTheme": "vs-dark", "path": "./themes/aurora-ember-color-theme.json" },
+      { "label": "Aurora Rose", "uiTheme": "vs-dark", "path": "./themes/aurora-rose-color-theme.json" }
+    ]
+  }
+}

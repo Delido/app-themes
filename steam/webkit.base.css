@@ -1,0 +1,91 @@
+/* ==========================================================
+   Nocturne - Store & Community (Webseiten im Client)
+   Quelle fuer webkit.css - build.js setzt die --nc-* Farben davor.
+   ========================================================== */
+
+html, body, body.v6, body.v7,
+.responsive_page_frame,
+.responsive_page_content,
+.responsive_page_template_content,
+.page_content_ctn,
+.home_page_body_ctn {
+  background-color: var(--nc-bg0) !important;
+  background-image: none !important;
+  color: var(--nc-text);
+  font-family: var(--nc-font) !important;
+}
+
+/* Grosse Spiel-Hintergrundbilder abdunkeln statt entfernen */
+.game_page_background,
+.page_background_holder {
+  filter: brightness(.35) saturate(.8);
+}
+
+/* Kopfzeile + Store-Navigation */
+#global_header, #store_header {
+  background: var(--nc-bg0) !important;
+  border-bottom: 1px solid var(--nc-line) !important;
+}
+.store_nav_bg { background: var(--nc-bg1) !important; border-radius: 10px; }
+.store_nav .tab > span { color: var(--nc-text) !important; }
+.store_nav .tab:hover { background: var(--nc-bg3) !important; }
+
+/* Panels */
+.game_area_purchase_game,
+.block_content,
+.game_page_autocollapse_ctn,
+.profile_customization,
+.discovery_queue_ctn {
+  background: var(--nc-bg2) !important;
+  border-radius: 10px !important;
+  border: 1px solid var(--nc-line) !important;
+  box-shadow: none !important;
+}
+
+/* Kauf-/Haupt-Buttons: Aurora-Verlauf wie in TeamSpeak */
+.btn_green_steamui, .btn_green_white_innerfade, .btnv6_green_white_innerfade,
+.btn_blue_steamui, .btnv6_blue_hoverfade, .btn_blue_white_innerfade {
+  background: var(--nc-grad) !important;
+  color: #fff !important;
+  border-radius: 999px !important;
+  border: none !important;
+  text-shadow: none !important;
+}
+.btn_green_steamui > span, .btn_green_white_innerfade > span, .btnv6_green_white_innerfade > span,
+.btn_blue_steamui > span, .btnv6_blue_hoverfade > span, .btn_blue_white_innerfade > span {
+  background: transparent !important;
+  color: #fff !important;
+  text-shadow: none !important;
+}
+.btn_green_steamui:hover, .btnv6_green_white_innerfade:hover,
+.btn_blue_steamui:hover, .btnv6_blue_hoverfade:hover { filter: brightness(1.08); }
+
+/* Rabatte */
+.discount_pct, .bundle_base_discount {
+  background: var(--nc-accent) !important;
+  color: var(--nc-bg0) !important;
+  border-radius: 4px;
+}
+.discount_final_price, .game_purchase_price { color: var(--nc-text) !important; }
+
+a { color: var(--nc-accent); }
+a:hover { color: var(--nc-accent-hi) !important; }
+
+::selection { background: var(--nc-accent); color: var(--nc-bg0); }
+
+::-webkit-scrollbar { width: 8px; height: 8px; background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: var(--nc-line);
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:hover { background-color: var(--nc-accent-deep); }
+
+input, textarea, select {
+  background: var(--nc-bg1) !important;
+  color: var(--nc-text) !important;
+  border: 1px solid var(--nc-line) !important;
+  border-radius: 8px !important;
+}
+input:focus, textarea:focus { border-color: var(--nc-accent-deep) !important; outline: none; }

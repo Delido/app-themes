@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="300" viewBox="0 0 480 300">
+<defs>
+ <linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8b5cf6"/><stop offset="1" stop-color="#22d3ee"/></linearGradient>
+ <linearGradient id="gs" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#8b5cf6" stop-opacity=".28"/><stop offset="1" stop-color="#22d3ee" stop-opacity=".10"/></linearGradient>
+ <linearGradient id="hdr" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8b5cf6" stop-opacity=".45"/><stop offset="1" stop-color="#22d3ee" stop-opacity=".12"/></linearGradient>
+ <radialGradient id="glow" cx="1" cy="0" r="1"><stop offset="0" stop-color="#8b5cf6" stop-opacity=".16"/><stop offset=".6" stop-color="#8b5cf6" stop-opacity="0"/></radialGradient>
+ <filter id="blur" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="6"/></filter>
+ <clipPath id="c"><rect width="480" height="300" rx="16"/></clipPath>
+</defs>
+<g clip-path="url(#c)" font-family="Segoe UI Variable Text, Segoe UI, sans-serif">
+ <rect width="480" height="300" fill="#0a0c12"/>
+ <!-- sidebar -->
+ <rect x="0" y="0" width="120" height="300" fill="#0a0c12"/>
+ <rect x="12" y="14" width="96" height="22" rx="11" fill="#12151e" stroke="#ffffff" stroke-opacity=".06"/>
+ <rect x="12" y="50" width="96" height="30" rx="9" fill="url(#gs)" stroke="#8b5cf6" stroke-opacity=".45"/>
+ <circle cx="27" cy="65" r="8" fill="url(#g)"/>
+ <rect x="41" y="61" width="52" height="7" rx="3.5" fill="#eceef4"/>
+ <circle cx="27" cy="99" r="8" fill="#1d2230"/><rect x="41" y="95" width="44" height="7" rx="3.5" fill="#7d8499"/>
+ <circle cx="27" cy="127" r="8" fill="#1d2230"/><rect x="41" y="123" width="56" height="7" rx="3.5" fill="#7d8499"/>
+ <circle cx="27" cy="155" r="8" fill="#1d2230"/><rect x="41" y="151" width="36" height="7" rx="3.5" fill="#7d8499"/>
+ <!-- main -->
+ <rect x="120" y="0" width="360" height="300" fill="#0e1118"/>
+ <rect x="120" y="0" width="360" height="300" fill="url(#glow)"/>
+ <rect x="132" y="12" width="336" height="54" rx="14" fill="url(#hdr)" stroke="#ffffff" stroke-opacity=".1"/>
+ <rect x="146" y="25" width="28" height="28" rx="8" fill="url(#g)"/>
+ <rect x="184" y="28" width="96" height="9" rx="4.5" fill="#ffffff"/>
+ <rect x="184" y="43" width="60" height="6" rx="3" fill="#ffffff" fill-opacity=".55"/>
+ <!-- tree -->
+ <text x="140" y="88" font-size="9" letter-spacing="1.2" font-weight="600" fill="#c4b5fd">LOBBY</text>
+ <rect x="132" y="96" width="196" height="26" rx="13" fill="#ffffff" fill-opacity=".03" stroke="#ffffff" stroke-opacity=".04"/>
+ <rect x="146" y="106" width="70" height="6" rx="3" fill="#e6e8ef"/>
+ <rect x="132" y="128" width="196" height="26" rx="13" fill="url(#gs)" stroke="#8b5cf6" stroke-opacity=".5"/>
+ <rect x="146" y="138" width="88" height="6" rx="3" fill="#ffffff"/>
+ <circle cx="158" cy="170" r="9" fill="url(#g)" filter="url(#blur)" opacity=".9"/>
+ <circle cx="158" cy="170" r="7.5" fill="none" stroke="url(#g)" stroke-width="2"/>
+ <circle cx="158" cy="170" r="5" fill="#1d2230"/>
+ <rect x="172" y="167" width="62" height="6" rx="3" fill="#eceef4"/>
+ <circle cx="158" cy="192" r="6.5" fill="#1d2230" stroke="#3a4052" stroke-width="1.5"/>
+ <rect x="172" y="189" width="48" height="6" rx="3" fill="#7d8499"/>
+ <circle cx="158" cy="214" r="6.5" fill="#1d2230" stroke="#3a4052" stroke-width="1.5"/>
+ <rect x="172" y="211" width="54" height="6" rx="3" fill="#7d8499"/>
+ <rect x="132" y="232" width="196" height="26" rx="13" fill="#ffffff" fill-opacity=".03" stroke="#ffffff" stroke-opacity=".04"/>
+ <rect x="146" y="242" width="58" height="6" rx="3" fill="#e6e8ef"/>
+ <!-- chat -->
+ <rect x="340" y="78" width="128" height="210" rx="14" fill="#12151e" stroke="#ffffff" stroke-opacity=".06"/>
+ <rect x="350" y="92" width="84" height="26" rx="10" fill="#1d2230"/>
+ <rect x="360" y="102" width="56" height="6" rx="3" fill="#c6cbd9"/>
+ <rect x="374" y="126" width="84" height="26" rx="10" fill="#8b5cf6" fill-opacity=".35" stroke="#8b5cf6" stroke-opacity=".5"/>
+ <rect x="384" y="136" width="60" height="6" rx="3" fill="#ffffff"/>
+ <rect x="350" y="160" width="70" height="26" rx="10" fill="#1d2230"/>
+ <rect x="360" y="170" width="44" height="6" rx="3" fill="#c6cbd9"/>
+ <rect x="350" y="252" width="108" height="26" rx="10" fill="#0e1118" stroke="#8b5cf6" stroke-opacity=".4"/>
+ <rect x="434" y="257" width="18" height="16" rx="8" fill="url(#g)"/>
+ <text x="352" y="235" font-size="9" fill="#7d8499">Aurora Violet</text>
+</g>
+</svg>

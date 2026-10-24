@@ -1,0 +1,240 @@
+/**
+ * @name Aurora
+ * @author Sebastian Mendyka
+ * @description Deep-Space-Schwarz mit Aurora-Verlauf - passend zum TeamSpeak-Theme Aurora (com.mendyka.aurora).
+ * @version 1.0.0
+ */
+
+/* ==========================================================================
+   Variante: genau EINE Zeile aktiv lassen (wie in TeamSpeak)
+   ========================================================================== */
+:root { --au-a: #3b82f6; --au-b: #22d3ee; --au-a-hsl: 217 91% 60%; }   /* Ice    */
+/* :root { --au-a: #14b8a6; --au-b: #818cf8; --au-a-hsl: 173 80% 40%; } */  /* Mint   */
+/* :root { --au-a: #8b5cf6; --au-b: #22d3ee; --au-a-hsl: 258 90% 66%; } */  /* Violet */
+/* :root { --au-a: #f97316; --au-b: #f43f5e; --au-a-hsl: 25 95% 53%; } */   /* Ember  */
+/* :root { --au-a: #ec4899; --au-b: #a855f7; --au-a-hsl: 330 81% 60%; } */  /* Rose   */
+
+/* ==========================================================================
+   Tokens - identisch zu Aurora in TeamSpeak
+   ========================================================================== */
+:root {
+  --au-0: #06070b;
+  --au-1: #0a0c12;
+  --au-2: #0e1118;
+  --au-3: #12151e;
+  --au-4: #171b26;
+  --au-5: #1d2230;
+  --au-line: rgba(255, 255, 255, .06);
+  --au-line-strong: rgba(255, 255, 255, .10);
+  --au-grad: linear-gradient(120deg, var(--au-a) 0%, var(--au-b) 100%);
+  --au-grad-soft: linear-gradient(120deg, color-mix(in srgb, var(--au-a) 22%, transparent), color-mix(in srgb, var(--au-b) 12%, transparent));
+  --au-a-10: color-mix(in srgb, var(--au-a) 10%, transparent);
+  --au-a-18: color-mix(in srgb, var(--au-a) 18%, transparent);
+  --au-a-35: color-mix(in srgb, var(--au-a) 35%, transparent);
+  --au-glow: 0 0 0 1px color-mix(in srgb, var(--au-a) 45%, transparent), 0 6px 24px -6px color-mix(in srgb, var(--au-a) 55%, transparent);
+  --au-shadow: 0 18px 50px -12px rgba(0, 0, 0, .7), 0 0 0 1px var(--au-line-strong);
+  --au-radius: 10px;
+  --au-font: "Segoe UI Variable Text", "Segoe UI Variable Display", "Segoe UI", "Noto Sans", sans-serif;
+}
+
+/* ==========================================================================
+   Discord-Variablen auf Aurora umbiegen (Dark, Darker, Midnight)
+   ========================================================================== */
+.theme-dark, .theme-darker, .theme-midnight,
+.visual-refresh.theme-dark, .visual-refresh.theme-darker, .visual-refresh.theme-midnight {
+  /* Flaechen */
+  --app-frame-background: var(--au-0) !important;
+  --app-frame-border: var(--au-line) !important;
+  --background-base-lowest: var(--au-0) !important;
+  --background-base-lower: var(--au-1) !important;
+  --background-base-low: var(--au-2) !important;
+  --background-surface-high: var(--au-3) !important;
+  --background-surface-higher: var(--au-4) !important;
+  --background-surface-highest: var(--au-5) !important;
+  --chat-background: var(--au-2) !important;
+  --chat-background-default: var(--au-2) !important;
+  --panel-bg: var(--au-1) !important;
+  --card-background-default: var(--au-3) !important;
+  --modal-background: var(--au-3) !important;
+  --bg-surface-raised: var(--au-4) !important;
+  --input-background-default: var(--au-1) !important;
+
+  /* Linien */
+  --border-subtle: var(--au-line) !important;
+  --border-normal: var(--au-line-strong) !important;
+
+  /* Text */
+  --text-strong: #eceef4 !important;
+  --text-default: #e6e8ef !important;
+  --text-subtle: #a3a9ba !important;
+  --text-muted: #7d8499 !important;
+  --text-link: var(--au-b) !important;
+  --text-brand: var(--au-a) !important;
+  --channels-default: #7d8499 !important;
+  --interactive-text-default: #a3a9ba !important;
+  --interactive-icon-default: #a3a9ba !important;
+  --interactive-muted: #4c5263 !important;
+  --icon-default: #c6cbd9 !important;
+  --icon-subtle: #a3a9ba !important;
+  --icon-muted: #7d8499 !important;
+  --icon-brand: var(--au-a) !important;
+  --icon-link: var(--au-b) !important;
+
+  /* Akzent statt Blurple */
+  --brand-500: var(--au-a) !important;
+  --brand-560: color-mix(in srgb, var(--au-a) 88%, black) !important;
+  --brand-600: color-mix(in srgb, var(--au-a) 78%, black) !important;
+  --brand-360: color-mix(in srgb, var(--au-a) 70%, white) !important;
+  --brand-500-hsl: var(--au-a-hsl) !important;
+  --background-accent: var(--au-a) !important;
+  --control-brand-foreground: var(--au-a) !important;
+  --control-brand-foreground-new: var(--au-a) !important;
+  --interactive-accent-background-default: var(--au-a-18) !important;
+  --interactive-accent-background-hover: var(--au-a) !important;
+  --interactive-accent-background-selected: var(--au-a) !important;
+  --interactive-accent-background-active: color-mix(in srgb, var(--au-a) 85%, black) !important;
+  --mention-foreground: #fff !important;
+  --mention-background: var(--au-a-35) !important;
+
+  /* Status wie in Aurora */
+  --icon-status-online: #34d399 !important;
+  --icon-status-idle: #fbbf24 !important;
+  --icon-status-dnd: #f43f5e !important;
+  --icon-voice-speaking: var(--au-b) !important;
+  --status-speaking: var(--au-b) !important;
+
+  /* Scrollbars */
+  --scrollbar-auto-thumb: var(--au-5) !important;
+  --scrollbar-auto-track: transparent !important;
+  --scrollbar-thin-thumb: var(--au-5) !important;
+}
+
+/* ==========================================================================
+   Feinschliff im Aurora-Stil
+   Discord-Klassen haben zufaellige Endungen, deshalb [class*="name_"].
+   Fehlt ein Element nach einem Update, passiert einfach nichts.
+   ========================================================================== */
+body { font-family: var(--au-font); }
+
+::selection { background: var(--au-a-35); color: #fff; }
+
+/* Deep-Space-Schimmer im Kanal- und Chatbereich, wie der Servertree in TS */
+[class*="sidebar_"] {
+  background:
+    radial-gradient(120% 70% at 100% 0%, color-mix(in srgb, var(--au-a) 7%, transparent) 0%, transparent 60%),
+    radial-gradient(90% 60% at 0% 100%, color-mix(in srgb, var(--au-b) 5%, transparent) 0%, transparent 60%),
+    var(--au-1) !important;
+}
+
+/* Kanaele als abgerundete Karten */
+[class*="containerDefault_"] [class*="link_"] {
+  border-radius: var(--au-radius) !important;
+  transition: background-color .15s ease, box-shadow .15s ease;
+}
+[class*="containerDefault_"] [class*="link_"]:hover { background: var(--au-a-10) !important; }
+
+/* Ausgewaehlter Kanal: weicher Aurora-Verlauf + Akzentkante */
+[class*="modeSelected_"] [class*="link_"],
+[class*="containerDefault_"][class*="selected_"] [class*="link_"] {
+  background: var(--au-grad-soft) !important;
+  box-shadow: inset 2px 0 0 var(--au-a) !important;
+}
+[class*="modeSelected_"] [class*="name_"] { color: #fff !important; }
+
+/* Ungelesen-Punkt / Serverliste-Pille im Verlauf */
+[class*="guilds_"] [class*="pill_"] [class*="item_"] { background: var(--au-grad) !important; }
+
+/* Server-Icons: Glow bei Hover und Auswahl */
+[class*="guilds_"] [class*="wrapper_"][class*="selected_"],
+[class*="guilds_"] [class*="wrapper_"]:hover {
+  box-shadow: var(--au-glow);
+  border-radius: 16px;
+}
+
+/* Chat-Eingabe: Pille mit Fokus-Glow wie in TS */
+[class*="channelTextArea_"] [class*="scrollableContainer_"] {
+  background: var(--au-1) !important;
+  border: 1px solid var(--au-line-strong) !important;
+  border-radius: 14px !important;
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+[class*="channelTextArea_"]:focus-within [class*="scrollableContainer_"] {
+  border-color: var(--au-a-35) !important;
+  box-shadow: 0 0 0 3px var(--au-a-10) !important;
+}
+
+/* Nachrichten: dezenter Hover */
+[class*="message_"]:hover { background: rgba(255, 255, 255, .025) !important; }
+
+/* Erwaehnungen mit Akzentkante */
+[class*="mentioned_"] {
+  background: var(--au-a-10) !important;
+  box-shadow: inset 2px 0 0 var(--au-a) !important;
+}
+
+/* Benutzerpanel unten links: Karte */
+[class*="panels_"] {
+  background: var(--au-1) !important;
+  border-top: 1px solid var(--au-line) !important;
+}
+
+/* Primaer-Buttons im Aurora-Verlauf */
+button[class*="colorBrand_"],
+button[class*="lookFilled_"][class*="colorBrand_"],
+[class*="button_"][class*="brand_"] {
+  background: var(--au-grad) !important;
+  color: #fff !important;
+  border: none !important;
+}
+button[class*="colorBrand_"]:hover,
+[class*="button_"][class*="brand_"]:hover { filter: brightness(1.08); box-shadow: var(--au-glow); }
+
+/* Voice- und Benutzerpanel: invertiert wie die TS-Toolbar - dunkle Pille, Akzent-Icon.
+   Aktive Schalter (stumm, Kamera an ...) behalten Discords eigene Zustandsfarben. */
+[class*="panels_"] button[class]:not([aria-checked="true"]) {
+  background: var(--au-3) !important;
+  color: var(--au-a) !important;
+  border: 1px solid var(--au-line) !important;
+  box-shadow: none !important;
+  filter: none !important;
+  transition: background-color .15s ease, color .15s ease, box-shadow .15s ease;
+}
+[class*="panels_"] button[class]:not([aria-checked="true"]):hover {
+  background: var(--au-a-18) !important;
+  color: var(--au-b) !important;
+  box-shadow: var(--au-glow) !important;
+}
+[class*="panels_"] button[aria-label*="trennen"],
+[class*="panels_"] button[aria-label*="Disconnect"] {
+  color: #f43f5e !important;
+}
+[class*="panels_"] button[aria-label*="trennen"]:hover,
+[class*="panels_"] button[aria-label*="Disconnect"]:hover {
+  background: rgba(244, 63, 94, .15) !important;
+  box-shadow: 0 0 0 1px rgba(244, 63, 94, .45), 0 6px 24px -6px rgba(244, 63, 94, .55) !important;
+}
+
+/* Sprechende Nutzer: leuchtender Ring wie in TS */
+[class*="avatarSpeaking_"] {
+  box-shadow: inset 0 0 0 2px var(--au-b), 0 0 12px -2px var(--au-b) !important;
+}
+
+/* Menues & Popouts: Frosted Glass */
+[class*="menu_"],
+[class*="popout_"],
+[class*="tooltip_"] {
+  background: rgba(10, 12, 18, .88) !important;
+  backdrop-filter: blur(18px) saturate(140%);
+  border: 1px solid var(--au-line-strong) !important;
+  border-radius: var(--au-radius) !important;
+  box-shadow: var(--au-shadow) !important;
+}
+[class*="menu_"] [class*="item_"] { border-radius: 6px !important; }
+[class*="menu_"] [class*="item_"][class*="focused_"] { background: var(--au-a) !important; color: #fff !important; }
+
+/* Modals */
+[class*="root_"][role="dialog"] {
+  border: 1px solid var(--au-line-strong) !important;
+  border-radius: 14px !important;
+  box-shadow: var(--au-shadow) !important;
+}
