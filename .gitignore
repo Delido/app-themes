@@ -1,5 +1,6 @@
-# Persoenliche Registry-Sicherung von windows/apply.ps1
+# Persoenliche Sicherung von windows/apply.ps1 + wallpaper.ps1, erzeugte Hintergruende
 windows/backup/
+windows/aurora-*-wallpaper.png
 
 # Von steam/build.js aus Steams CSS generiert - lokal neu bauen
 steam/libraryroot.custom.css
