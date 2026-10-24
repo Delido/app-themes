@@ -94,9 +94,10 @@ $mods = [ordered]@{
         )
     }
     'windows-11-file-explorer-styler' = @{
-        # Ganzes Fenster mit Mica - Windows toent es aus dem Aurora-Hintergrund (wallpaper.ps1)
+        # Mica nur im Kopfbereich (Tabs, Adresse, Befehlsleiste). Ueber das ganze Fenster wurden
+        # Navigation und Dateiliste auf Build 26300 heller grau (#3a3a3e) statt dunkler.
         backgroundTranslucentEffect = 'mica'
-        backgroundTranslucentEffectRegion = ''
+        backgroundTranslucentEffectRegion = 'explorerFrame'
         controlStyles = @(
             @{ t = 'FileExplorerExtensions.CommandBarControl_Wave1 > Grid, Grid#CommandBarControlRootGrid'
                s = @('Background=Transparent') }
