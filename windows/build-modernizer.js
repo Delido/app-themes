@@ -54,6 +54,22 @@ function patch(src) {
       new RegExp(`^static_assert\\(${name} == RGB\\([^)]*\\)\\);`, 'm'),
       m => `// Aurora: ${m}`);
   }
+  // Desktop-Icon-Liste nicht doppelt puffern: mit einem Hintergrund-Fenster (Lively) dahinter
+  // kann sie den Hintergrund nicht selbst nachzeichnen -> Markierungsrahmen unsichtbar bzw. Streifen
+  replace('ListView double-buffer',
+    /\/\/ ListView — enable double-buffer \(modern marquee selection\)\n    if \(isListView\) \{/,
+    '// ListView — enable double-buffer (modern marquee selection)\n' +
+    '    // Aurora: nicht auf dem Desktop (Lively-Hintergrund -> Markierung unsichtbar/Streifen)\n' +
+    '    if (isListView && !IsInsideDesktop(hwnd)) {');
+  // Die Desktop-Icon-Liste zeichnet ihren Markierungsrahmen per DrawFocusRect (XOR, zweiter Aufruf
+  // loescht). Upstream unterdrueckt das fuer SysListView32 (unsichtbar) bzw. ersetzt es durch einen
+  // nicht-XOR-Rahmen (Streifen) -> auf dem Desktop immer die Original-Funktion nehmen
+  replace('DrawFocusRect desktop',
+    /(BOOL WINAPI DrawFocusRect_hook\(HDC hdc, CONST RECT\* lprc\)\n\{[\s\S]*?GetClassNameW\(hwnd, cls, ARRAYSIZE\(cls\)\);\n)/,
+    '$1\n' +
+    '        // Aurora: Markierungsrahmen auf dem Desktop nativ lassen\n' +
+    '        if (_wcsicmp(cls, L"SysListView32") == 0 && IsInsideDesktop(hwnd))\n' +
+    '            [[clang::musttail]] return DrawFocusRect_orig(hdc, lprc);\n');
   // Basis der "Fake Mica"-Faerbung
   replace('micaBase',
     /const COLORREF micaBase = dark \? RGB\(0x16, 0x16, 0x16\)/,
