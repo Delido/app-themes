@@ -74,6 +74,13 @@ $mods = [ordered]@{
             # Vorschau-Flyout beim Hover
             @{ t = 'Taskbar.TaskbarBackground#HoverFlyoutBackgroundControl > Grid > Rectangle#BackgroundFill'
                s = @("Fill:=$glass") }
+            # Kontextmenues der Taskleiste (Win+X am Startknopf, Taskleiste, Tray) und Tray-Popups
+            @{ t = 'MenuFlyoutPresenter > Border'
+               s = @("Background:=$glass", 'BorderThickness=1', "BorderBrush:=$line", 'CornerRadius=10') }
+            @{ t = 'Windows.UI.Xaml.Controls.FlyoutPresenter'
+               s = @("Background:=$glass", 'BorderThickness=1', "BorderBrush:=$line", 'CornerRadius=10') }
+            @{ t = 'Border#OverflowFlyoutBackgroundBorder'
+               s = @("Background:=$glass", 'BorderThickness=1', "BorderBrush:=$line", 'CornerRadius=10') }
         )
     }
     'windows-11-start-menu-styler' = @{
