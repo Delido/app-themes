@@ -41,6 +41,7 @@ $glass     = '<WindhawkBlur BlurAmount="25" TintColor="#E60A0C12"/>'    # --au-1
 $glassDeep = '<WindhawkBlur BlurAmount="25" TintColor="#EB06070B"/>'    # --au-0
 $line      = '<SolidColorBrush Color="#FFFFFF" Opacity="0.08"/>'
 $field     = '<SolidColorBrush Color="#06070B" Opacity="0.7"/>'
+$menu      = '<SolidColorBrush Color="#0A0C12" Opacity="0.97"/>'           # WinUI-3-Menues im Explorer
 $tint      = { param($o) "<SolidColorBrush Color=`"$A`" Opacity=`"$o`"/>" }
 $white     = { param($o) "<SolidColorBrush Color=`"#FFFFFF`" Opacity=`"$o`"/>" }
 $grad      = "<LinearGradientBrush StartPoint=`"0,0.5`" EndPoint=`"1,0.5`"><GradientStop Offset=`"0`" Color=`"$A`"/><GradientStop Offset=`"1`" Color=`"$B`"/></LinearGradientBrush>"
@@ -111,6 +112,13 @@ $mods = [ordered]@{
                s = @("Background:=$field", 'CornerRadius=8', 'BorderThickness=0') }
             @{ t = 'TabViewItem > Grid#LayoutRoot > Canvas > Microsoft.UI.Xaml.Shapes.Path#SelectedBackgroundPath'
                s = @("Fill:=$(& $tint 0.16)") }
+            # Neues Kontextmenue (auch Desktop): Symbolleiste, Liste, Untermenues - Ziele aus dem WindowGlass-Theme
+            @{ t = 'Microsoft.UI.Xaml.Controls.Primitives.CommandBarFlyoutCommandBar > Grid#LayoutRoot > Grid#OuterContentRoot > Grid#ContentRoot > Grid#PrimaryItemsRoot'
+               s = @("Background:=$menu", 'BorderThickness=1', "BorderBrush:=$line", 'CornerRadius=10') }
+            @{ t = 'CommandBarOverflowPresenter#SecondaryItemsControl > Grid#LayoutRoot'
+               s = @("Background:=$menu", 'BorderThickness=1', "BorderBrush:=$line", 'CornerRadius=10') }
+            @{ t = 'MenuFlyoutPresenter > Border'
+               s = @("Background:=$menu", 'BorderThickness=1', "BorderBrush:=$line", 'CornerRadius=10') }
         )
     }
     # Farbregeln aus dem eingebauten OLED-Theme des Mods, ohne dessen Layout-Umbau
