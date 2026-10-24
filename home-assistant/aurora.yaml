@@ -1,0 +1,345 @@
+# Aurora – Home-Assistant-Theme passend zum Aurora-Design-System
+# (TeamSpeak, Steam, Discord, VS Code, Windows).
+#
+# Geprüft gegen HA 2026.10.3 / Frontend 20260930.5: Alle Variablen unten werden
+# von dieser Frontend-Version tatsächlich gelesen (Ausnahme: Block "Legacy").
+#
+# Aufbau:
+#   - "Aurora Ice" definiert die gemeinsame Basis als YAML-Anker &aurora.
+#   - Jede Variante setzt nur vier Variablen: au-accent (A), au-accent-2 (B),
+#     au-accent-light (heller Akzent) und au-on-accent (Text auf voller A-Fläche).
+#   - Alle Akzent-Tönungen werden per color-mix() aus au-accent abgeleitet.
+#   - HA erzeugt zu jedem Hex-Wert automatisch --rgb-<name>, z. B. --rgb-au-accent.
+#   - Nur "modes: dark" → HA erzwingt bei diesen Themes den Dark-Mode.
+
+Aurora Ice:
+  modes:
+    dark:
+      <<: &aurora
+        # ── Design-Tokens ─────────────────────────────────────────────
+        au-0: "#06070b"
+        au-1: "#0a0c12"
+        au-2: "#0e1118"
+        au-3: "#12151e"
+        au-4: "#171b26"
+        au-5: "#1d2230"
+        au-line: "rgba(255, 255, 255, 0.06)"
+        au-line-strong: "rgba(255, 255, 255, 0.10)"
+        au-glow: "0 0 0 1px color-mix(in srgb, var(--au-accent) 45%, transparent), 0 6px 24px -6px color-mix(in srgb, var(--au-accent) 55%, transparent)"
+        au-gradient: "linear-gradient(120deg, var(--au-accent), var(--au-accent-2))"
+
+        # ── Schrift ───────────────────────────────────────────────────
+        ha-font-family-body: '"Segoe UI Variable Text", "Segoe UI", sans-serif'
+        ha-font-family-longform: var(--ha-font-family-body)
+        mdc-typography-font-family: var(--ha-font-family-body)
+
+        # ── Flächen ───────────────────────────────────────────────────
+        primary-background-color: var(--au-2)
+        secondary-background-color: var(--au-4)
+        clear-background-color: var(--au-2)
+        card-background-color: var(--au-3)
+        mdc-theme-background: var(--au-2)
+        mdc-theme-surface: var(--au-5)
+        ha-color-surface-default: var(--au-3)
+        ha-color-surface-low: var(--au-2)
+        ha-color-surface-lower: var(--au-0)
+        ha-color-on-surface-default: "#eceef4"
+
+        # ── Karten ────────────────────────────────────────────────────
+        ha-card-background: var(--au-3)
+        ha-card-border-radius: 14px
+        ha-card-border-width: 1px
+        ha-card-border-color: var(--au-line)
+        ha-card-box-shadow: "0 18px 50px -12px rgba(0, 0, 0, 0.7)"
+        ha-card-header-color: "#eceef4"
+        ha-heading-card-title-color: "#eceef4"
+        ha-heading-card-subtitle-color: "#a3a9ba"
+        ha-box-shadow-m: "0 8px 24px -8px rgba(0, 0, 0, 0.6)"
+        ha-box-shadow-l: "0 18px 50px -12px rgba(0, 0, 0, 0.7)"
+
+        # ── Kacheln (Tile card) ───────────────────────────────────────
+        ha-tile-info-primary-color: "#eceef4"
+        ha-tile-info-secondary-color: "#a3a9ba"
+
+        # ── Header & Sidebar ──────────────────────────────────────────
+        app-header-background-color: var(--au-0)
+        app-header-text-color: "#eceef4"
+        app-header-border-bottom: 1px solid var(--au-line)
+        app-theme-color: "#06070b"
+        sidebar-background-color: var(--au-1)
+        sidebar-text-color: "#a3a9ba"
+        sidebar-icon-color: "#7d8499"
+        # Färbt Text + Icon des aktiven Eintrags, Hintergrund = dieselbe Farbe mit 12 %
+        sidebar-selected-icon-color: var(--au-accent)
+        sidebar-menu-button-text-color: "#eceef4"
+
+        # ── Text ──────────────────────────────────────────────────────
+        primary-text-color: "#e6e8ef"
+        secondary-text-color: "#a3a9ba"
+        disabled-text-color: "#565d70"
+        text-primary-color: var(--au-on-accent)
+        text-light-primary-color: "#06070b"
+        ha-color-text-primary: "#e6e8ef"
+        ha-color-text-secondary: "#a3a9ba"
+        ha-color-text-disabled: "#565d70"
+        ha-color-text-link: var(--au-accent-light)
+        ha-dialog-header-title-color: "#eceef4"
+        ha-dialog-header-subtitle-color: "#a3a9ba"
+
+        # ── Linien ────────────────────────────────────────────────────
+        divider-color: var(--au-line)
+        outline-color: var(--au-line-strong)
+        outline-hover-color: "rgba(255, 255, 255, 0.18)"
+        shadow-color: "rgba(0, 0, 0, 0.6)"
+        scrollbar-thumb-color: "#2a3040"
+        ha-color-border-neutral-quiet: var(--au-line-strong)
+
+        # ── Akzent ────────────────────────────────────────────────────
+        primary-color: var(--au-accent)
+        accent-color: var(--au-accent-2)
+        light-primary-color: var(--au-accent-light)
+        dark-primary-color: "color-mix(in srgb, var(--au-accent) 75%, #000)"
+        darker-primary-color: "color-mix(in srgb, var(--au-accent) 55%, #000)"
+        rgb-primary-color: var(--rgb-au-accent)
+        rgb-accent-color: var(--rgb-au-accent-2)
+        mdc-theme-primary: var(--au-accent)
+        mdc-theme-secondary: var(--au-accent-2)
+        ha-color-focus: var(--au-accent)
+
+        # Material-3-Nachfolger in 2026.10: das --ha-color-*-Token-System.
+        # --primary-color, Buttons, Switches, Dialoge (Web Awesome) hängen daran.
+        ha-color-primary-05: color-mix(in srgb, var(--au-accent) 10%, var(--au-2))
+        ha-color-primary-10: color-mix(in srgb, var(--au-accent) 16%, var(--au-2))
+        ha-color-primary-20: color-mix(in srgb, var(--au-accent) 26%, var(--au-2))
+        ha-color-primary-30: color-mix(in srgb, var(--au-accent) 80%, var(--au-2))
+        ha-color-primary-40: var(--au-accent)
+        ha-color-primary-50: color-mix(in srgb, var(--au-accent) 60%, var(--au-accent-light))
+        ha-color-primary-60: color-mix(in srgb, var(--au-accent) 30%, var(--au-accent-light))
+        ha-color-primary-70: var(--au-accent-light)
+        ha-color-primary-80: "color-mix(in srgb, var(--au-accent-light) 60%, #fff)"
+        ha-color-primary-90: "color-mix(in srgb, var(--au-accent-light) 30%, #fff)"
+        ha-color-primary-95: "color-mix(in srgb, var(--au-accent-light) 15%, #fff)"
+        # Akzentflächen nur als Tönung (10–22 %), volle Fläche nur für "loud"
+        ha-color-fill-primary-quiet-resting: color-mix(in srgb, var(--au-accent) 10%, transparent)
+        ha-color-fill-primary-quiet-hover: color-mix(in srgb, var(--au-accent) 14%, transparent)
+        ha-color-fill-primary-quiet-active: color-mix(in srgb, var(--au-accent) 10%, transparent)
+        ha-color-fill-primary-normal-resting: color-mix(in srgb, var(--au-accent) 16%, transparent)
+        ha-color-fill-primary-normal-hover: color-mix(in srgb, var(--au-accent) 22%, transparent)
+        ha-color-fill-primary-normal-active: color-mix(in srgb, var(--au-accent) 16%, transparent)
+        ha-color-fill-primary-loud-resting: var(--au-accent)
+        ha-color-fill-primary-loud-hover: var(--ha-color-primary-50)
+        ha-color-fill-primary-loud-active: var(--au-accent)
+        ha-color-on-primary-quiet: var(--au-accent-light)
+        ha-color-on-primary-normal: var(--ha-color-primary-60)
+        ha-color-on-primary-loud: var(--au-on-accent)
+        ha-color-border-primary-quiet: color-mix(in srgb, var(--au-accent) 30%, transparent)
+        ha-color-border-primary-normal: color-mix(in srgb, var(--au-accent) 55%, transparent)
+        ha-color-border-primary-loud: var(--au-accent)
+
+        # Neutral-Skala auf Aurora-Flächen/-Texte gelegt
+        ha-color-neutral-00: "#06070b"
+        ha-color-neutral-05: "#0e1118"
+        ha-color-neutral-10: "#12151e"
+        ha-color-neutral-20: "#1d2230"
+        ha-color-neutral-30: "#2a3040"
+        ha-color-neutral-40: "#3a4155"
+        ha-color-neutral-50: "#565d70"
+        ha-color-neutral-60: "#7d8499"
+        ha-color-neutral-70: "#a3a9ba"
+        ha-color-neutral-80: "#c3c7d2"
+        ha-color-neutral-90: "#e6e8ef"
+        ha-color-neutral-95: "#eceef4"
+
+        # ── Status ────────────────────────────────────────────────────
+        success-color: "#34d399"
+        warning-color: "#fbbf24"
+        error-color: "#f43f5e"
+        info-color: "#93c5fd"
+        ha-color-green-05: color-mix(in srgb, var(--success-color) 10%, var(--au-2))
+        ha-color-green-10: color-mix(in srgb, var(--success-color) 16%, var(--au-2))
+        ha-color-green-20: color-mix(in srgb, var(--success-color) 26%, var(--au-2))
+        ha-color-green-30: color-mix(in srgb, var(--success-color) 80%, var(--au-2))
+        ha-color-green-40: var(--success-color)
+        ha-color-green-50: var(--success-color)
+        ha-color-green-60: var(--success-color)
+        ha-color-green-70: "color-mix(in srgb, var(--success-color) 70%, #fff)"
+        ha-color-green-80: "color-mix(in srgb, var(--success-color) 50%, #fff)"
+        ha-color-green-90: "color-mix(in srgb, var(--success-color) 30%, #fff)"
+        ha-color-green-95: "color-mix(in srgb, var(--success-color) 15%, #fff)"
+        ha-color-orange-05: color-mix(in srgb, var(--warning-color) 10%, var(--au-2))
+        ha-color-orange-10: color-mix(in srgb, var(--warning-color) 16%, var(--au-2))
+        ha-color-orange-20: color-mix(in srgb, var(--warning-color) 26%, var(--au-2))
+        ha-color-orange-30: color-mix(in srgb, var(--warning-color) 80%, var(--au-2))
+        ha-color-orange-40: var(--warning-color)
+        ha-color-orange-50: var(--warning-color)
+        ha-color-orange-60: var(--warning-color)
+        ha-color-orange-70: "color-mix(in srgb, var(--warning-color) 70%, #fff)"
+        ha-color-orange-80: "color-mix(in srgb, var(--warning-color) 50%, #fff)"
+        ha-color-orange-90: "color-mix(in srgb, var(--warning-color) 30%, #fff)"
+        ha-color-orange-95: "color-mix(in srgb, var(--warning-color) 15%, #fff)"
+        ha-color-red-05: color-mix(in srgb, var(--error-color) 10%, var(--au-2))
+        ha-color-red-10: color-mix(in srgb, var(--error-color) 16%, var(--au-2))
+        ha-color-red-20: color-mix(in srgb, var(--error-color) 26%, var(--au-2))
+        ha-color-red-30: color-mix(in srgb, var(--error-color) 80%, var(--au-2))
+        ha-color-red-40: var(--error-color)
+        ha-color-red-50: var(--error-color)
+        ha-color-red-60: var(--error-color)
+        ha-color-red-70: "color-mix(in srgb, var(--error-color) 70%, #fff)"
+        ha-color-red-80: "color-mix(in srgb, var(--error-color) 50%, #fff)"
+        ha-color-red-90: "color-mix(in srgb, var(--error-color) 30%, #fff)"
+        ha-color-red-95: "color-mix(in srgb, var(--error-color) 15%, #fff)"
+        # Dark-Mode-Defaults lassen diese auf fast-weißen Tönen stehen
+        ha-color-border-success-quiet: color-mix(in srgb, var(--success-color) 30%, transparent)
+        ha-color-border-warning-quiet: color-mix(in srgb, var(--warning-color) 30%, transparent)
+        ha-color-border-danger-quiet: color-mix(in srgb, var(--error-color) 30%, transparent)
+        # Helle Füllungen brauchen dunklen Text
+        ha-color-on-success-loud: "#06070b"
+        ha-color-on-warning-loud: "#06070b"
+
+        # Benannte Farben (Default-Statusfarben + Farbwahl in Kacheln)
+        red-color: "#f43f5e"
+        pink-color: "#ec4899"
+        purple-color: "#a855f7"
+        deep-purple-color: "#8b5cf6"
+        indigo-color: "#818cf8"
+        blue-color: "#3b82f6"
+        light-blue-color: "#93c5fd"
+        cyan-color: "#22d3ee"
+        teal-color: "#14b8a6"
+        green-color: "#34d399"
+        amber-color: "#fbbf24"
+        orange-color: "#f97316"
+        grey-color: "#7d8499"
+        light-grey-color: "#a3a9ba"
+        dark-grey-color: "#565d70"
+        disabled-color: "#3a4155"
+
+        # ── Entitäts-Zustände ─────────────────────────────────────────
+        # Neutral gedämpft, eingeschaltet = Akzent A
+        state-icon-color: "#a3a9ba"
+        state-inactive-color: "#7d8499"
+        state-active-color: var(--au-accent)
+        state-light-active-color: var(--au-accent)
+        state-switch-active-color: var(--au-accent)
+        state-fan-active-color: var(--au-accent)
+        state-media_player-active-color: var(--au-accent)
+        state-cover-active-color: var(--au-accent)
+        state-binary_sensor-active-color: var(--au-accent)
+        state-valve-active-color: var(--au-accent)
+        state-humidifier-on-color: var(--au-accent)
+        state-vacuum-active-color: var(--au-accent)
+        state-person-active-color: var(--au-accent-light)
+        state-device_tracker-active-color: var(--au-accent-light)
+        state-person-home-color: var(--success-color)
+        state-device_tracker-home-color: var(--success-color)
+
+        # Mushroom-Karten (erwarten RGB-Tripel)
+        mush-rgb-state-light: var(--rgb-au-accent)
+        mush-rgb-state-fan: var(--rgb-au-accent)
+        mush-rgb-state-entity: var(--rgb-au-accent)
+        mush-rgb-state-media-player: var(--rgb-au-accent)
+        mush-rgb-state-vacuum: var(--rgb-au-accent)
+        mush-rgb-success: var(--rgb-success-color)
+        mush-rgb-warning: var(--rgb-warning-color)
+        mush-rgb-danger: var(--rgb-error-color)
+        mush-rgb-info: var(--rgb-info-color)
+
+        # ── Switches ──────────────────────────────────────────────────
+        ha-switch-background-color: "rgba(255, 255, 255, 0.04)"
+        ha-switch-border-color: "rgba(255, 255, 255, 0.16)"
+        ha-switch-thumb-background-color: "#7d8499"
+        ha-switch-thumb-border-color: "#7d8499"
+        ha-switch-checked-background-color: color-mix(in srgb, var(--au-accent) 18%, transparent)
+        ha-switch-checked-border-color: var(--au-accent)
+        ha-switch-checked-thumb-background-color: var(--au-accent)
+        ha-switch-checked-thumb-border-color: var(--au-accent)
+
+        # ── Slider & Fortschritt ──────────────────────────────────────
+        # Slider-Füllung wird als background-color gesetzt → kein Verlauf möglich
+        ha-slider-indicator-color: var(--au-accent)
+        ha-slider-thumb-color: var(--au-accent)
+        ha-slider-track-color: var(--au-4)
+        slider-color: var(--au-accent)
+        slider-secondary-color: var(--au-accent-light)
+        slider-track-color: var(--au-4)
+        # Fortschrittsbalken wird als background gesetzt → Verlauf A → B
+        ha-progress-bar-indicator-background: var(--au-gradient)
+        ha-progress-bar-track-color: var(--au-4)
+
+        # ── Eingabefelder ─────────────────────────────────────────────
+        input-fill-color: "rgba(255, 255, 255, 0.04)"
+        input-disabled-fill-color: "rgba(255, 255, 255, 0.02)"
+        input-idle-line-color: "rgba(255, 255, 255, 0.16)"
+        input-hover-line-color: "rgba(255, 255, 255, 0.30)"
+        input-outlined-idle-border-color: "rgba(255, 255, 255, 0.16)"
+        input-outlined-hover-border-color: "rgba(255, 255, 255, 0.30)"
+        input-ink-color: "#e6e8ef"
+        input-label-ink-color: "#a3a9ba"
+        input-disabled-ink-color: "#565d70"
+        input-dropdown-icon-color: "#7d8499"
+        ha-color-form-background: "rgba(255, 255, 255, 0.04)"
+        ha-color-form-background-hover: "rgba(255, 255, 255, 0.07)"
+        ha-color-form-background-disabled: "rgba(255, 255, 255, 0.02)"
+
+        # ── Dialoge & Popups (Frosted Glass, nativ ohne card-mod) ─────
+        ha-dialog-surface-background: "rgba(10, 12, 18, 0.88)"
+        ha-dialog-surface-backdrop-filter: blur(24px) saturate(140%)
+        ha-dialog-scrim-backdrop-filter: blur(4px) brightness(60%)
+
+        # ── Code, Tabellen, Markdown ──────────────────────────────────
+        code-editor-background-color: var(--au-1)
+        markdown-code-background-color: var(--au-1)
+        data-table-background-color: var(--au-3)
+        table-header-background-color: var(--au-4)
+        table-row-background-color: var(--au-3)
+        table-row-alternative-background-color: var(--au-4)
+
+        # ── Legacy ────────────────────────────────────────────────────
+        # Von HA 2026.10 nicht mehr gelesen; nur für ältere Custom Cards
+        state-on-color: var(--au-accent)
+        paper-item-icon-color: "#a3a9ba"
+        paper-item-icon-active-color: var(--au-accent)
+        switch-checked-color: var(--au-accent)
+        switch-checked-track-color: var(--au-accent)
+        sidebar-selected-text-color: var(--au-accent)
+
+      au-accent: "#3b82f6"
+      au-accent-2: "#22d3ee"
+      au-accent-light: "#93c5fd"
+      au-on-accent: "#ffffff"
+
+Aurora Mint:
+  modes:
+    dark:
+      <<: *aurora
+      au-accent: "#14b8a6"
+      au-accent-2: "#818cf8"
+      au-accent-light: "#99f6e4"
+      au-on-accent: "#06070b"
+
+Aurora Violet:
+  modes:
+    dark:
+      <<: *aurora
+      au-accent: "#8b5cf6"
+      au-accent-2: "#22d3ee"
+      au-accent-light: "#c4b5fd"
+      au-on-accent: "#ffffff"
+
+Aurora Ember:
+  modes:
+    dark:
+      <<: *aurora
+      au-accent: "#f97316"
+      au-accent-2: "#f43f5e"
+      au-accent-light: "#fdba74"
+      au-on-accent: "#06070b"
+
+Aurora Rose:
+  modes:
+    dark:
+      <<: *aurora
+      au-accent: "#ec4899"
+      au-accent-2: "#a855f7"
+      au-accent-light: "#f9a8d4"
+      au-on-accent: "#06070b"

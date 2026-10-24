@@ -1,7 +1,8 @@
 # Aurora – ein Look für alle Apps
 
 Deep-Space-Schwarz mit Aurora-Verlauf. Ursprünglich als TeamSpeak-Theme entstanden,
-jetzt einheitlich für TeamSpeak, Steam, Discord, VS Code, Raycast und Windows.
+jetzt einheitlich für TeamSpeak, Steam, Discord, VS Code, Raycast, Windows,
+Home Assistant und BookStack.
 
 ## Palette
 
@@ -42,6 +43,8 @@ Akzent für Icon/Text, beim Hover leichter Glow.
 | `windows/` (Explorer-Flächen) | Windhawk, lokaler Mod | `node windows\build-modernizer.js` erzeugt *Win32 UI Modernizer (Aurora)*; in Windhawk „Neuen Mod erstellen“, Inhalt einfügen, kompilieren – Einstellungen setzt `windhawk.ps1` |
 | `windows/` (Hintergrund) | Mica-Tönung | `.\windows\wallpaper.ps1 -Variant ice` – dunkles Aurora-Bild als Windows-Hintergrund (liegt unter Lively), Backup in `windows\backup` |
 | `windows/`    | Windows 11 | `.\windows\apply.ps1 -Variant ice` (Dark Mode + Akzent, Backup in `windows\backup`), zurück mit `restore.ps1` |
+| `home-assistant/` | Home Assistant | `aurora.yaml` nach `/config/themes/`, `frontend.reload_themes`, im Profil wählen – siehe [home-assistant/README.md](home-assistant/README.md) |
+| `bookstack/`  | BookStack  | `aurora-head.html` in Einstellungen → Anpassung → Benutzerdefinierter HTML-Head-Inhalt – siehe [bookstack/README.md](bookstack/README.md) |
 
 ## Variante wechseln
 
@@ -51,6 +54,8 @@ node steam\build.js --variant mint --install
 # VS Code: Strg+K Strg+T -> "Aurora Mint"
 # Discord: in Aurora.theme.css die Mint-Zeile aktivieren
 # TeamSpeak: "Aurora Mint" in den Theme-Einstellungen
+# Home Assistant: Profil -> Design -> "Aurora Mint"
+node bookstack\build.js --url https://wiki.example.org --variant mint
 ```
 
 ## Lizenz
