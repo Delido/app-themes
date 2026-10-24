@@ -1,0 +1,21 @@
+{
+  "author": "Sebastian Mendyka",
+  "authorUsername": "delido",
+  "version": "1",
+  "name": "Aurora Rose",
+  "appearance": "dark",
+  "colors": {
+    "background": "#0a0c12",
+    "backgroundSecondary": "#171b26",
+    "text": "#e6e8ef",
+    "selection": "#ec4899",
+    "loader": "#a855f7",
+    "red": "#f43f5e",
+    "orange": "#fb923c",
+    "yellow": "#fbbf24",
+    "green": "#34d399",
+    "blue": "#60a5fa",
+    "purple": "#a78bfa",
+    "magenta": "#f472b6"
+  }
+}

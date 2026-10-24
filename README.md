@@ -1,7 +1,7 @@
 # Aurora – ein Look für alle Apps
 
 Deep-Space-Schwarz mit Aurora-Verlauf. Ursprünglich als TeamSpeak-Theme entstanden,
-jetzt einheitlich für TeamSpeak, Steam, Discord, VS Code und Windows.
+jetzt einheitlich für TeamSpeak, Steam, Discord, VS Code, Raycast und Windows.
 
 ## Palette
 
@@ -37,6 +37,7 @@ Akzent für Icon/Text, beim Hover leichter Glow.
 | `steam/`      | Steam (Millennium) | `node build.js --variant ice --install` – siehe [steam/README.md](steam/README.md) |
 | `discord/`    | Discord (BetterDiscord) | `Aurora.theme.css` nach `%APPDATA%\BetterDiscord\themes`, Variante oben in der Datei |
 | `vscode/`     | VS Code    | `node build.js`, `npx @vscode/vsce package --allow-missing-repository --skip-license`, `code --install-extension aurora-theme-1.0.0.vsix` |
+| `raycast/`    | Raycast (Pro) | Import-Link aus [raycast/links.md](raycast/links.md) öffnen |
 | `windows/`    | Windows 11 | `.\windows\apply.ps1 -Variant ice` (Dark Mode + Akzent, Backup in `windows\backup`), zurück mit `restore.ps1` |
 
 ## Variante wechseln

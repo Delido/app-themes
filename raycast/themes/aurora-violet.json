@@ -1,0 +1,21 @@
+{
+  "author": "Sebastian Mendyka",
+  "authorUsername": "delido",
+  "version": "1",
+  "name": "Aurora Violet",
+  "appearance": "dark",
+  "colors": {
+    "background": "#0a0c12",
+    "backgroundSecondary": "#171b26",
+    "text": "#e6e8ef",
+    "selection": "#8b5cf6",
+    "loader": "#22d3ee",
+    "red": "#f43f5e",
+    "orange": "#fb923c",
+    "yellow": "#fbbf24",
+    "green": "#34d399",
+    "blue": "#60a5fa",
+    "purple": "#a78bfa",
+    "magenta": "#f472b6"
+  }
+}
