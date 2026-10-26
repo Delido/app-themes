@@ -1,0 +1,542 @@
+<!-- Aurora für BookStack (geprüft gegen v26.09.2, erzeugt mit bookstack/build.js)
+     Einfügen unter: Einstellungen → Anpassung → "Benutzerdefinierter HTML-Head-Inhalt".
+     Wirkt im Hellen und im Dunklen Modus. Variante wechseln: nur die drei Zeilen unter "Variante" tauschen. -->
+<style id="aurora-theme">
+/* Geltungsbereiche – alle drei wiegen etwas mehr als BookStacks eigenes html.dark-mode:
+   :root.dark-mode        nur Dunkler Modus
+   :root:not(.dark-mode)  nur Heller Modus
+   :root:not(.au)         beide Modi */
+:root:not(.au) {
+  /* Variante: Ice */
+  --au-accent: #3b82f6;
+  --au-accent-2: #22d3ee;
+  --au-accent-light: #93c5fd;
+  /* Mint   #14b8a6 #818cf8 #99f6e4
+     Violet #8b5cf6 #22d3ee #c4b5fd
+     Ember  #f97316 #f43f5e #fdba74
+     Rose   #ec4899 #a855f7 #f9a8d4 */
+
+  --editor-color-primary: var(--au-accent);
+  --color-link: var(--au-accent-text);
+  --font-body: "Segoe UI Variable Text", "Segoe UI", sans-serif;
+  --font-heading: var(--font-body);
+}
+
+/* Hell: kühles Weiß, Text in Deep-Space-Tönen, Akzent für Text abgedunkelt */
+:root:not(.dark-mode) {
+  --au-0: #ffffff; --au-1: #f7f8fb; --au-2: #f1f3f8;
+  --au-3: #ffffff; --au-4: #eceff5; --au-5: #e3e7ef;
+  --au-line: rgba(16,22,40,.09);
+  --au-line-strong: rgba(16,22,40,.16);
+  --au-text-strong: #0e1220; --au-text: #262b3a; --au-text-muted: #4a5165;
+  --au-text-secondary: #646b80; --au-text-disabled: #9aa0b1;
+  --au-accent-text: color-mix(in srgb, var(--au-accent) 70%, #000);
+  --au-glow: 0 0 0 1px color-mix(in srgb, var(--au-accent) 40%, transparent),
+             0 6px 20px -8px color-mix(in srgb, var(--au-accent) 45%, transparent);
+  --au-shadow: 0 1px 2px rgba(16,22,40,.04), 0 10px 30px -14px rgba(16,22,40,.22);
+  --au-scrollbar: #c9cfdb;
+
+  /* Weiße Schrift auf Buttons braucht hell den dunkleren Akzent */
+  --color-primary: var(--au-accent-text);
+  --color-primary-light: color-mix(in srgb, var(--au-accent) 12%, transparent);
+  /* Inhaltstypen: dieselben Farbfamilien wie dunkel, kräftiger für hellen Grund */
+  --color-bookshelf: #db2777;
+  --color-book: #0d9488;
+  --color-chapter: #ea580c;
+  --color-page: #2563eb;
+  --color-page-draft: #7c3aed;
+  --color-positive: #059669;
+  --color-warning: #d97706;
+  --color-negative: #e11d48;
+  --color-info: #2563eb;
+}
+
+/* Dunkel: Deep Space */
+:root.dark-mode {
+  --au-0: #06070b; --au-1: #0a0c12; --au-2: #0e1118;
+  --au-3: #12151e; --au-4: #171b26; --au-5: #1d2230;
+  --au-line: rgba(255,255,255,.06);
+  --au-line-strong: rgba(255,255,255,.10);
+  --au-text-strong: #eceef4; --au-text: #e6e8ef; --au-text-muted: #a3a9ba;
+  --au-text-secondary: #7d8499; --au-text-disabled: #565d70;
+  --au-accent-text: var(--au-accent-light);
+  --au-glow: 0 0 0 1px color-mix(in srgb, var(--au-accent) 45%, transparent),
+             0 6px 24px -6px color-mix(in srgb, var(--au-accent) 55%, transparent);
+  --au-shadow: 0 18px 50px -12px rgba(0,0,0,.7);
+  --au-scrollbar: #2a3040;
+
+  --color-primary: var(--au-accent);
+  --color-primary-light: color-mix(in srgb, var(--au-accent) 15%, transparent);
+  /* Inhaltstypen: die fünf hellen Aurora-Akzente */
+  --color-bookshelf: #f9a8d4;
+  --color-book: #99f6e4;
+  --color-chapter: #fdba74;
+  --color-page: #93c5fd;
+  --color-page-draft: #c4b5fd;
+  --color-positive: #34d399;
+  --color-warning: #fbbf24;
+  --color-negative: #f43f5e;
+  --color-info: #93c5fd;
+}
+
+/* ── Generiert aus BookStacks styles.css: feste Dark-Mode-Grautöne → Aurora ── */
+:root.dark-mode{background-color:var(--au-2)}
+:root.dark-mode body{color:var(--au-text)}
+:root.dark-mode h1,:root.dark-mode h2,:root.dark-mode h3,:root.dark-mode h4,:root.dark-mode h5,:root.dark-mode h6{color:var(--au-text-strong)}
+:root.dark-mode hr{background:var(--au-line-strong)}
+:root.dark-mode hr.darker{background:rgba(255,255,255,.16)}
+:root.dark-mode pre{background-color:var(--au-1)}
+:root.dark-mode pre{border-color:var(--au-line)}
+:root.dark-mode pre:before{background-color:var(--au-4)}
+:root.dark-mode blockquote{background-color:var(--au-4)}
+:root.dark-mode .code-base,:root.dark-mode span.code,:root.dark-mode code{background-color:var(--au-1)}
+:root.dark-mode .code-base,:root.dark-mode span.code,:root.dark-mode code{border-color:var(--au-line-strong)}
+:root.dark-mode .primary-background-light{background:var(--au-0)}
+:root.dark-mode .primary-background-light .text-link{color:var(--au-text) !important}
+:root.dark-mode .text-muted{color:var(--au-text-secondary) !important}
+:root.dark-mode .text-dark{color:var(--au-text) !important}
+:root.dark-mode .scroll-away-from-top:before,:root.dark-mode .scroll-away-from-bottom:after{color:var(--au-3)}
+:root.dark-mode .card{background-color:var(--au-3)}
+:root.dark-mode .card-footer-link,:root.dark-mode button.card-footer-link{border-color:rgba(255,255,255,.14)}
+:root.dark-mode .card-footer-link:hover,:root.dark-mode button.card-footer-link:hover{background-color:var(--au-4)}
+:root.dark-mode .card-footer-link:focus,:root.dark-mode button.card-footer-link:focus{background-color:var(--au-3)}
+:root.dark-mode .card.border-card{border-color:var(--au-line)}
+:root.dark-mode .card.drag-card{border-color:var(--au-line)}
+:root.dark-mode .card.drag-card{background-color:var(--au-4)}
+:root.dark-mode .card.drag-card .handle:hover,:root.dark-mode .card.drag-card .drag-card-action:hover{background-color:var(--au-4)}
+:root.dark-mode .card.drag-card .handle{background-color:var(--au-4)}
+:root.dark-mode .grid-card{border-color:var(--au-line)}
+:root.dark-mode .sub-card{border-color:var(--au-line-strong)}
+:root.dark-mode .tag-item{border-color:rgba(255,255,255,.18)}
+:root.dark-mode .tag-item .tag-value{border-color:rgba(255,255,255,.18)}
+:root.dark-mode .sticky-sidebar-header{background:var(--au-2);background:linear-gradient(180deg, rgb(14, 17, 24) 80%, rgba(14, 17, 24, 0) 100%)}
+:root.dark-mode .button.outline{color:var(--au-text)}
+:root.dark-mode .button.outline{border-color:rgba(255,255,255,.18)}
+:root.dark-mode .button.outline:hover,:root.dark-mode .button.outline:focus,:root.dark-mode .button.outline:active{color:var(--au-text-strong)}
+:root.dark-mode .button.outline:hover,:root.dark-mode .button.outline:focus,:root.dark-mode .button.outline:active{background-color:var(--au-5)}
+:root.dark-mode .icon-button:hover{border-color:var(--au-line-strong)}
+:root.dark-mode table:not(:has(thead)) th,:root.dark-mode table thead{background-color:var(--au-4)}
+:root.dark-mode table.table tr:hover{background-color:var(--au-4)}
+:root.dark-mode .input-base,:root.dark-mode input[type=text],:root.dark-mode input[type=number],:root.dark-mode input[type=email],:root.dark-mode input[type=date],:root.dark-mode input[type=search],:root.dark-mode input[type=url],:root.dark-mode input[type=color],:root.dark-mode input[type=password],:root.dark-mode select,:root.dark-mode textarea,:root.dark-mode .fake-input{background-color:var(--au-4)}
+:root.dark-mode .input-base,:root.dark-mode input[type=text],:root.dark-mode input[type=number],:root.dark-mode input[type=email],:root.dark-mode input[type=date],:root.dark-mode input[type=search],:root.dark-mode input[type=url],:root.dark-mode input[type=color],:root.dark-mode input[type=password],:root.dark-mode select,:root.dark-mode textarea,:root.dark-mode .fake-input{border-color:var(--au-line)}
+:root.dark-mode .input-base,:root.dark-mode input[type=text],:root.dark-mode input[type=number],:root.dark-mode input[type=email],:root.dark-mode input[type=date],:root.dark-mode input[type=search],:root.dark-mode input[type=url],:root.dark-mode input[type=color],:root.dark-mode input[type=password],:root.dark-mode select,:root.dark-mode textarea,:root.dark-mode .fake-input{color:var(--au-text)}
+:root.dark-mode #markdown-editor #markdown-editor-input{color:var(--au-text)}
+:root.dark-mode #markdown-editor #markdown-editor-input{background-color:var(--au-3)}
+:root.dark-mode .markdown-editor-wrap{border-color:var(--au-line)}
+:root.dark-mode .markdown-panel-divider{background-color:var(--au-0)}
+@media screen and (max-width: 880px){
+:root.dark-mode .editor-toolbar-label{border-color:rgba(255,255,255,.14)}
+}
+html.markdown-editor-display.dark-mode{background-color:var(--au-3)}
+html.markdown-editor-display.dark-mode body{background-color:var(--au-3)}
+:root.dark-mode .editor-toolbar{background-color:var(--au-4)}
+:root.dark-mode .editor-toolbar{border-color:var(--au-line)}
+:root.dark-mode .editor-toolbar button{color:var(--au-text)}
+:root.dark-mode .editor-toolbar .buttons button{border-color:rgba(255,255,255,.14)}
+:root.dark-mode .editor-toolbar .buttons button:hover{background-color:var(--au-3)}
+:root.dark-mode label{color:var(--au-text)}
+:root.dark-mode .setting-list-label{color:var(--au-text)}
+:root.dark-mode .form-group.collapsible{border-color:var(--au-line)}
+:root.dark-mode .description-input>.tox-tinymce{border-color:var(--au-line) !important}
+:root.dark-mode .search-box button[tabindex="-1"]{color:var(--au-text)}
+:root.dark-mode .contained-search-box.floating{border:1px solid var(--au-line)}
+:root.dark-mode .contained-search-box input,:root.dark-mode .contained-search-box button{border-color:var(--au-line)}
+:root.dark-mode .contained-search-box button{background-color:var(--au-4)}
+:root.dark-mode .contained-search-box button{color:var(--au-text)}
+:root.dark-mode .custom-simple-file-input{border-color:rgba(255,255,255,.18)}
+:root.dark-mode .custom-simple-file-input::file-selector-button{color:var(--au-text)}
+:root.dark-mode .custom-simple-file-input::file-selector-button{border-color:rgba(255,255,255,.18)}
+:root.dark-mode .custom-simple-file-input::file-selector-button:hover,:root.dark-mode .custom-simple-file-input::file-selector-button:focus,:root.dark-mode .custom-simple-file-input::file-selector-button:active{color:var(--au-text-strong)}
+:root.dark-mode .custom-simple-file-input::file-selector-button:hover,:root.dark-mode .custom-simple-file-input::file-selector-button:focus,:root.dark-mode .custom-simple-file-input::file-selector-button:active{background-color:var(--au-5)}
+:root.dark-mode .tox .tox-toolbar__primary,:root.dark-mode .tox .tox-menu,:root.dark-mode .tox .tox-dialog__header,:root.dark-mode .tox .tox-dialog,:root.dark-mode .tox .tox-dialog__footer,:root.dark-mode .tox .tox-pop__dialog,:root.dark-mode .tox.tox-tinymce-aux .tox-toolbar__overflow{background-color:var(--au-4) !important}
+:root.dark-mode .tox .tox-tbtn svg,:root.dark-mode .tox .tox-tbtn,:root.dark-mode .tox .tox-collection--list .tox-collection__item--active:not(.tox-collection__item--state-disabled){color:var(--au-text-muted);fill:var(--au-text-muted)}
+:root.dark-mode .editor-container{background-color:var(--au-3)}
+:root.dark-mode .editor-toolbar-main{border-color:var(--au-line)}
+:root.dark-mode .comment-editor-container,:root.dark-mode .basic-editor-container{border-color:var(--au-line)}
+:root.dark-mode .editor-button{color:var(--au-text-muted)}
+:root.dark-mode .editor-button:hover{background-color:var(--au-4)}
+:root.dark-mode .editor-button-active,:root.dark-mode .editor-button-active:hover{background-color:var(--au-5)}
+:root.dark-mode .editor-button-text{color:var(--au-text)}
+:root.dark-mode .editor-button-with-menu-container:hover{outline-color:var(--au-line)}
+:root.dark-mode .editor-dropdown-menu{background-color:var(--au-5)}
+:root.dark-mode .editor-dropdown-menu{border-color:var(--au-line-strong)}
+:root.dark-mode .editor-separator{background-color:var(--au-0)}
+:root.dark-mode .editor-overflow-container{border-color:var(--au-line)}
+:root.dark-mode .editor-context-toolbar{background-color:var(--au-3)}
+:root.dark-mode .editor-context-toolbar{border-color:var(--au-line-strong)}
+:root.dark-mode .editor-context-toolbar:before{background-color:var(--au-3)}
+:root.dark-mode .editor-context-toolbar:before{border-color:var(--au-line-strong)}
+:root.dark-mode .editor-modal{background-color:var(--au-3)}
+:root.dark-mode .editor-table-creator-cell{border-color:var(--au-line)}
+:root.dark-mode .editor-node-resizer-handle{background-color:var(--au-0)}
+:root.dark-mode .editor-form-field-input{border-color:var(--au-line)}
+:root.dark-mode .editor-form-field-input{color:var(--au-text-strong)}
+:root.dark-mode .editor-form-action-secondary{border-color:rgba(255,255,255,.18)}
+:root.dark-mode .editor-form-action-secondary{color:var(--au-text)}
+:root.dark-mode .editor-form-action-secondary:hover,:root.dark-mode .editor-form-action-secondary:focus,:root.dark-mode .editor-form-action-secondary:active{color:var(--au-text-strong)}
+:root.dark-mode .editor-form-action-secondary:hover,:root.dark-mode .editor-form-action-secondary:focus,:root.dark-mode .editor-form-action-secondary:active{background-color:var(--au-5)}
+:root.dark-mode .editor-form-tab-control{color:var(--au-text-disabled)}
+:root.dark-mode .cm-editor{border-color:var(--au-line-strong)}
+:root.dark-mode .cm-copy-button{background-color:var(--au-4)}
+:root.dark-mode .cm-copy-button{border-color:var(--au-line-strong)}
+:root.dark-mode .cm-copy-button{color:var(--au-text-secondary)}
+:root.dark-mode .notification{background-color:var(--au-5)}
+:root.dark-mode .notification .dismiss svg{color:var(--au-text-secondary)}
+:root.dark-mode .notification span{color:var(--au-text-strong)}
+:root.dark-mode .popup-body{background-color:var(--au-4)}
+:root.dark-mode .dropzone-file-item{background:var(--au-5)}
+:root.dark-mode .image-manager-filter-bar{background-color:rgba(29,34,48,.88)}
+:root.dark-mode .image-manager-filters{border:1px solid var(--au-line) !important}
+:root.dark-mode .image-manager-filters button{background-color:var(--au-4)}
+:root.dark-mode .image-manager-list .image{border-color:var(--au-line)}
+:root.dark-mode .image-manager-warning{background:var(--au-4)}
+:root.dark-mode .image-manager-sidebar{border-color:var(--au-line)}
+:root.dark-mode .tab-container.bordered [role=tablist] button[role=tab]{border-inline-end-color:var(--au-line)}
+:root.dark-mode .tab-container [role=tablist]{border-color:var(--au-line-strong)}
+:root.dark-mode .code-editor .lang-options button{color:var(--au-text)}
+:root.dark-mode .code-editor .lang-options button{border-bottom-color:var(--au-line)}
+:root.dark-mode .comment-box{border-color:var(--au-line)}
+:root.dark-mode .comment-box{background-color:var(--au-3)}
+:root.dark-mode .comment-box .header{border-color:var(--au-line)}
+:root.dark-mode .comment-thread-indicator{border-color:var(--au-line-strong)}
+:root.dark-mode .template-item .template-item-actions{border-color:var(--au-line)}
+:root.dark-mode .template-item .template-item-actions button{background-color:var(--au-3)}
+:root.dark-mode .template-item .template-item-actions button{border-color:var(--au-line)}
+:root.dark-mode .dropdown-search-toggle-breadcrumb:hover{border-color:var(--au-line-strong)}
+:root.dark-mode .dropdown-search-dropdown .dropdown-search-item:hover,:root.dark-mode .dropdown-search-dropdown .dropdown-search-item:focus{background-color:var(--au-5)}
+:root.dark-mode .item-list-row{border-color:var(--au-line-strong)}
+:root.dark-mode .item-list-row:hover{background-color:var(--au-4)}
+:root.dark-mode .scroll-box{border-color:var(--au-line)}
+:root.dark-mode .scroll-box{background-color:var(--au-0)}
+:root.dark-mode .scroll-box-item{border-color:var(--au-line)}
+:root.dark-mode .scroll-box-item{background-color:var(--au-3)}
+:root.dark-mode .scroll-box-item:hover{background-color:var(--au-4)}
+:root.dark-mode input.scroll-box-search,:root.dark-mode .scroll-box-header-item{border-color:var(--au-line)}
+:root.dark-mode input.scroll-box-search,:root.dark-mode .scroll-box-header-item{background-color:var(--au-3)}
+:root.dark-mode details.section-expander summary{border-color:var(--au-line)}
+:root.dark-mode details.section-expander{border-color:var(--au-line)}
+:root.dark-mode header{border-bottom-color:var(--au-line)}
+:root.dark-mode #header-search-box-button{color:var(--au-text)}
+:root.dark-mode header .search-box.search-active:focus-within input{background-color:var(--au-4)}
+:root.dark-mode header .search-box.search-active:focus-within input{border-color:var(--au-line)}
+:root.dark-mode header .search-box.search-active:focus-within #header-search-box-button,:root.dark-mode header .search-box.search-active:focus-within input{color:var(--au-text)}
+@media screen and (max-width: 1000px){
+:root.dark-mode header .header-links{background-color:var(--au-4)}
+:root.dark-mode header .links a,:root.dark-mode header .dropdown-container ul li a,:root.dark-mode header .dropdown-container ul li button{color:var(--au-text-strong)}
+:root.dark-mode header .links a:focus,:root.dark-mode header .dropdown-container ul li a:focus,:root.dark-mode header .dropdown-container ul li button:focus{background-color:var(--au-4)}
+}
+:root.dark-mode .tri-layout-mobile-tabs{border-bottom-color:var(--au-line-strong)}
+:root.dark-mode .tri-layout-mobile-tab{background-color:var(--au-3)}
+:root.dark-mode .tri-layout-mobile-tab{border-bottom-color:var(--au-line-strong)}
+:root.dark-mode .tri-layout-mobile-tab:first-child{border-inline-end-color:var(--au-line)}
+:root.dark-mode .sidebar-page-nav li:not(.current-heading) .sidebar-page-nav-bullet{background-color:rgba(255,255,255,.16) !important}
+:root.dark-mode .sidebar-page-nav .sidebar-page-nav-bullet{box-shadow:0 0 0 6px var(--au-2)}
+:root.dark-mode .sortable-page-list li{background-color:var(--au-3)}
+:root.dark-mode .sortable-page-list li{border-color:rgba(255,255,255,.18)}
+:root.dark-mode ul.pagination a,:root.dark-mode ul.pagination span{color:var(--au-text-strong)}
+:root.dark-mode ul.pagination a,:root.dark-mode ul.pagination span{border-color:rgba(255,255,255,.18)}
+:root.dark-mode ul.pagination li.active span{color:var(--au-text-strong)}
+:root.dark-mode .entity-list-item:focus,:root.dark-mode .icon-list-item:focus{background-color:var(--au-3)}
+:root.dark-mode .icon-list-item-dropdown-toggle{color:var(--au-text-muted)}
+:root.dark-mode .card .entity-list-item:not(.no-hover,.book-contents .entity-list-item):hover{background-color:var(--au-4)}
+:root.dark-mode .dropdown-menu{background-color:var(--au-4)}
+:root.dark-mode .dropdown-menu{color:var(--au-text-strong)}
+:root.dark-mode .dropdown-menu .icon-item,:root.dark-mode .dropdown-menu .text-item,:root.dark-mode .dropdown-menu .label-item{color:var(--au-text-strong)}
+:root.dark-mode .active-link-list a:not(.active){color:var(--au-text-secondary)}
+:root.dark-mode .page-editor-page-area{background-color:var(--au-4)}
+:root.dark-mode .pointer{border-color:var(--au-line)}
+:root.dark-mode .pointer{background-color:var(--au-4)}
+:root.dark-mode .pointer:before{background-color:var(--au-4)}
+:root.dark-mode .pointer:before{border-color:var(--au-line)}
+:root.dark-mode .pointer input{border-color:var(--au-line)}
+:root.dark-mode .pointer .text-button{color:var(--au-text)}
+:root.dark-mode .pointer .button{border-color:var(--au-line)}
+:root.dark-mode .content-comment-window{background-color:var(--au-3)}
+:root.dark-mode .floating-toolbox{background-color:var(--au-3)}
+:root.dark-mode .floating-toolbox .tabs{border-inline-end-color:var(--au-line)}
+:root.dark-mode .floating-toolbox .tabs-inner{background-color:var(--au-3)}
+:root.dark-mode .page-content details{border-color:rgba(255,255,255,.14)}
+:root.dark-mode .page-content details>summary{background-color:var(--au-4)}
+:root.dark-mode .page-content details[open]>summary{border-color:rgba(255,255,255,.14)}
+:root.dark-mode .callout.success{border-color:var(--color-positive)}
+:root.dark-mode .callout.success{background-color:color-mix(in srgb, var(--color-positive) 12%, var(--au-3))}
+:root.dark-mode .callout.success{color:var(--color-positive)}
+:root.dark-mode .callout.danger{border-color:var(--color-negative)}
+:root.dark-mode .callout.danger{background-color:color-mix(in srgb, var(--color-negative) 12%, var(--au-3))}
+:root.dark-mode .callout.danger{color:var(--color-negative)}
+:root.dark-mode .callout.info{border-color:var(--color-info)}
+:root.dark-mode .callout.info{background-color:color-mix(in srgb, var(--color-info) 12%, var(--au-3))}
+:root.dark-mode .callout.info{color:var(--color-info)}
+:root.dark-mode .callout.warning{border-color:var(--color-warning)}
+:root.dark-mode .callout.warning{background-color:color-mix(in srgb, var(--color-warning) 12%, var(--au-3))}
+:root.dark-mode .callout.warning{color:var(--color-warning)}
+:root.dark-mode .avatar{background-color:var(--au-0)}
+:root.dark-mode .entity-selector{border-color:var(--au-line)}
+:root.dark-mode .entity-selector .entity-list{background-color:var(--au-3)}
+:root.dark-mode .entity-selector .entity-list-item{background-color:var(--au-3)}
+:root.dark-mode .list-sort-container .list-sort{border-color:var(--au-line-strong)}
+:root.dark-mode .list-sort-container .list-sort-label,:root.dark-mode .list-sort-container .list-sort-toggle{color:var(--au-text-secondary)}
+:root.dark-mode .list-sort-container .list-sort-dir{border-color:var(--au-line-strong)}
+
+/* ── Generiert aus BookStacks styles.css: feste Grautöne des Hellen Modus → Aurora ── */
+:root:not(.dark-mode){background-color:var(--au-2)}
+:root:not(.dark-mode) body{color:var(--au-text)}
+:root:not(.dark-mode) h1,:root:not(.dark-mode) h2,:root:not(.dark-mode) h3,:root:not(.dark-mode) h4,:root:not(.dark-mode) h5,:root:not(.dark-mode) h6{color:var(--au-text-strong)}
+:root:not(.dark-mode) hr{background:var(--au-4)}
+:root:not(.dark-mode) hr.darker{background:var(--au-5)}
+:root:not(.dark-mode) pre{background-color:var(--au-3)}
+:root:not(.dark-mode) pre{border-color:var(--au-line)}
+:root:not(.dark-mode) pre:before{background-color:var(--au-1)}
+:root:not(.dark-mode) blockquote{background-color:var(--au-1)}
+:root:not(.dark-mode) .code-base,:root:not(.dark-mode) span.code,:root:not(.dark-mode) code{background-color:var(--au-1)}
+:root:not(.dark-mode) .code-base,:root:not(.dark-mode) span.code,:root:not(.dark-mode) code{border-color:var(--au-line)}
+:root:not(.dark-mode) .text-muted{color:var(--au-text-muted) !important}
+:root:not(.dark-mode) .text-dark{color:var(--au-text-strong) !important}
+:root:not(.dark-mode) .scroll-away-from-top:before,:root:not(.dark-mode) .scroll-away-from-bottom:after{color:var(--au-2)}
+:root:not(.dark-mode) .card{background-color:var(--au-3)}
+:root:not(.dark-mode) .card-footer-link,:root:not(.dark-mode) button.card-footer-link{border-color:var(--au-line)}
+:root:not(.dark-mode) .card-footer-link:hover,:root:not(.dark-mode) button.card-footer-link:hover{background-color:var(--au-2)}
+:root:not(.dark-mode) .card-footer-link:focus,:root:not(.dark-mode) button.card-footer-link:focus{background-color:var(--au-4)}
+:root:not(.dark-mode) .card.border-card{border-color:var(--au-line)}
+:root:not(.dark-mode) .card.drag-card{border-color:var(--au-line)}
+:root:not(.dark-mode) .card.drag-card{background-color:var(--au-3)}
+:root:not(.dark-mode) .card.drag-card .handle:hover,:root:not(.dark-mode) .card.drag-card .drag-card-action:hover{background-color:var(--au-4)}
+:root:not(.dark-mode) .card.drag-card .handle{background-color:var(--au-4)}
+:root:not(.dark-mode) .grid-card{border-color:var(--au-line)}
+:root:not(.dark-mode) .sub-card{border-color:var(--au-line)}
+:root:not(.dark-mode) .tag-item{border-color:var(--au-line-strong)}
+:root:not(.dark-mode) .tag-item .tag-value{border-color:var(--au-line)}
+:root:not(.dark-mode) .button.outline{color:var(--au-text-muted)}
+:root:not(.dark-mode) .button.outline{border-color:var(--au-line-strong)}
+:root:not(.dark-mode) .button.outline:hover,:root:not(.dark-mode) .button.outline:focus{color:var(--au-text)}
+:root:not(.dark-mode) .button.outline:active{color:var(--au-text-muted)}
+:root:not(.dark-mode) .button.outline:hover,:root:not(.dark-mode) .button.outline:focus{background-color:var(--au-1)}
+:root:not(.dark-mode) .button.outline:active{background-color:var(--au-5)}
+:root:not(.dark-mode) .icon-button:hover{border-color:var(--au-line)}
+:root:not(.dark-mode) table:not(:has(thead)) th,:root:not(.dark-mode) table thead{background-color:var(--au-1)}
+:root:not(.dark-mode) table.table tr:hover{background-color:var(--au-2)}
+:root:not(.dark-mode) .input-base,:root:not(.dark-mode) input[type=text],:root:not(.dark-mode) input[type=number],:root:not(.dark-mode) input[type=email],:root:not(.dark-mode) input[type=date],:root:not(.dark-mode) input[type=search],:root:not(.dark-mode) input[type=url],:root:not(.dark-mode) input[type=color],:root:not(.dark-mode) input[type=password],:root:not(.dark-mode) textarea,:root:not(.dark-mode) .fake-input{background-color:var(--au-3)}
+:root:not(.dark-mode) .input-base,:root:not(.dark-mode) input[type=text],:root:not(.dark-mode) input[type=number],:root:not(.dark-mode) input[type=email],:root:not(.dark-mode) input[type=date],:root:not(.dark-mode) input[type=search],:root:not(.dark-mode) input[type=url],:root:not(.dark-mode) input[type=color],:root:not(.dark-mode) input[type=password],:root:not(.dark-mode) select,:root:not(.dark-mode) textarea,:root:not(.dark-mode) .fake-input{border-color:var(--au-line-strong)}
+:root:not(.dark-mode) .input-base,:root:not(.dark-mode) input[type=text],:root:not(.dark-mode) input[type=number],:root:not(.dark-mode) input[type=email],:root:not(.dark-mode) input[type=date],:root:not(.dark-mode) input[type=search],:root:not(.dark-mode) input[type=url],:root:not(.dark-mode) input[type=color],:root:not(.dark-mode) input[type=password],:root:not(.dark-mode) select,:root:not(.dark-mode) textarea,:root:not(.dark-mode) .fake-input{color:var(--au-text-muted)}
+:root:not(.dark-mode) #markdown-editor #markdown-editor-input{color:var(--au-text)}
+:root:not(.dark-mode) #markdown-editor #markdown-editor-input{background-color:var(--au-3)}
+:root:not(.dark-mode) .markdown-editor-wrap{border-color:var(--au-line)}
+:root:not(.dark-mode) .markdown-panel-divider{background-color:var(--au-5)}
+@media screen and (max-width: 880px){
+:root:not(.dark-mode) .editor-toolbar-label{border-color:var(--au-line)}
+}
+:root:not(.dark-mode) .editor-toolbar{background-color:var(--au-3)}
+:root:not(.dark-mode) .editor-toolbar{border-color:var(--au-line-strong)}
+:root:not(.dark-mode) .editor-toolbar .buttons button{border-color:var(--au-line)}
+:root:not(.dark-mode) .editor-toolbar .buttons button:hover{background-color:var(--au-5)}
+:root:not(.dark-mode) label{color:var(--au-text-muted)}
+:root:not(.dark-mode) .setting-list-label{color:var(--au-text-strong)}
+:root:not(.dark-mode) .form-group.collapsible{border-color:var(--au-line)}
+:root:not(.dark-mode) .description-input>.tox-tinymce{border-color:var(--au-line) !important}
+:root:not(.dark-mode) .search-box button[tabindex="-1"]{color:var(--au-text-muted)}
+:root:not(.dark-mode) .contained-search-box button{background-color:var(--au-3)}
+:root:not(.dark-mode) .contained-search-box button{color:var(--au-text)}
+:root:not(.dark-mode) .custom-simple-file-input{border-color:var(--au-line)}
+:root:not(.dark-mode) .custom-simple-file-input::file-selector-button{color:var(--au-text-muted)}
+:root:not(.dark-mode) .custom-simple-file-input::file-selector-button{border-color:var(--au-line-strong)}
+:root:not(.dark-mode) .custom-simple-file-input::file-selector-button:hover,:root:not(.dark-mode) .custom-simple-file-input::file-selector-button:focus{color:var(--au-text)}
+:root:not(.dark-mode) .custom-simple-file-input::file-selector-button:active{color:var(--au-text-muted)}
+:root:not(.dark-mode) .custom-simple-file-input::file-selector-button:hover,:root:not(.dark-mode) .custom-simple-file-input::file-selector-button:focus{background-color:var(--au-1)}
+:root:not(.dark-mode) .custom-simple-file-input::file-selector-button:active{background-color:var(--au-5)}
+:root:not(.dark-mode) .editor-container{background-color:var(--au-3)}
+:root:not(.dark-mode) .editor-toolbar-main{border-color:var(--au-line)}
+:root:not(.dark-mode) .comment-editor-container,:root:not(.dark-mode) .basic-editor-container{border-color:var(--au-line)}
+:root:not(.dark-mode) .editor-button{color:var(--au-text)}
+:root:not(.dark-mode) .editor-button:hover{background-color:var(--au-4)}
+:root:not(.dark-mode) .editor-button-active,:root:not(.dark-mode) .editor-button-active:hover{background-color:var(--color-primary-light)}
+:root:not(.dark-mode) .editor-button-text{color:var(--au-text-strong)}
+:root:not(.dark-mode) .editor-button-with-menu-container:hover{outline-color:var(--au-line)}
+:root:not(.dark-mode) .editor-dropdown-menu{background-color:var(--au-3)}
+:root:not(.dark-mode) .editor-dropdown-menu{border-color:var(--au-line)}
+:root:not(.dark-mode) .editor-separator{background-color:var(--au-5)}
+:root:not(.dark-mode) .editor-overflow-container{border-color:var(--au-line)}
+:root:not(.dark-mode) .editor-context-toolbar{background-color:var(--au-3)}
+:root:not(.dark-mode) .editor-context-toolbar{border-color:var(--au-line)}
+:root:not(.dark-mode) .editor-context-toolbar:before{background-color:var(--au-3)}
+:root:not(.dark-mode) .editor-context-toolbar:before{border-color:var(--au-line)}
+:root:not(.dark-mode) .editor-modal{background-color:var(--au-3)}
+:root:not(.dark-mode) .editor-table-creator-cell{border-color:var(--au-line)}
+:root:not(.dark-mode) .editor-node-resizer-handle{background-color:var(--au-3)}
+:root:not(.dark-mode) .editor-form-field-input{border-color:var(--au-line)}
+:root:not(.dark-mode) .editor-form-field-input{color:var(--au-text)}
+:root:not(.dark-mode) .editor-form-action-secondary{border-color:var(--au-line-strong)}
+:root:not(.dark-mode) .editor-form-action-secondary{color:var(--au-text-muted)}
+:root:not(.dark-mode) .editor-form-action-secondary:hover,:root:not(.dark-mode) .editor-form-action-secondary:focus{color:var(--au-text)}
+:root:not(.dark-mode) .editor-form-action-secondary:active{color:var(--au-text-muted)}
+:root:not(.dark-mode) .editor-form-action-secondary:hover,:root:not(.dark-mode) .editor-form-action-secondary:focus{background-color:var(--au-1)}
+:root:not(.dark-mode) .editor-form-action-secondary:active{background-color:var(--au-5)}
+:root:not(.dark-mode) .editor-form-tab-control{color:var(--au-text)}
+:root:not(.dark-mode) .cm-editor{border-color:var(--au-line)}
+:root:not(.dark-mode) .cm-copy-button{background-color:var(--au-4)}
+:root:not(.dark-mode) .cm-copy-button{border-color:var(--au-line)}
+:root:not(.dark-mode) .cm-copy-button{color:var(--au-text)}
+:root:not(.dark-mode) .notification{background-color:var(--au-3)}
+:root:not(.dark-mode) .notification .dismiss svg{color:var(--au-text)}
+:root:not(.dark-mode) .popup-body{background-color:var(--au-3)}
+:root:not(.dark-mode) .dropzone-file-item{background:var(--au-3)}
+:root:not(.dark-mode) .image-manager-filters button{background-color:var(--au-3)}
+:root:not(.dark-mode) .image-manager-list .image{border-color:var(--au-line)}
+:root:not(.dark-mode) .image-manager-warning{background:var(--au-3)}
+:root:not(.dark-mode) .image-manager-sidebar{border-color:var(--au-line)}
+:root:not(.dark-mode) .tab-container.bordered [role=tablist] button[role=tab]{border-inline-end-color:var(--au-line)}
+:root:not(.dark-mode) .tab-container [role=tablist]{border-color:var(--au-line)}
+:root:not(.dark-mode) .code-editor .lang-options button{color:var(--au-text)}
+:root:not(.dark-mode) .code-editor .lang-options button{border-bottom-color:var(--au-line)}
+:root:not(.dark-mode) .comment-box{border-color:var(--au-line)}
+:root:not(.dark-mode) .comment-box{background-color:var(--au-3)}
+:root:not(.dark-mode) .comment-box .header{border-color:var(--au-line)}
+:root:not(.dark-mode) .comment-thread-indicator{border-color:var(--au-line)}
+:root:not(.dark-mode) .template-item .template-item-actions{border-color:var(--au-line)}
+:root:not(.dark-mode) .template-item .template-item-actions button{background-color:var(--au-3)}
+:root:not(.dark-mode) .template-item .template-item-actions button{border-color:var(--au-line)}
+:root:not(.dark-mode) .dropdown-search-toggle-breadcrumb:hover{border-color:var(--au-line)}
+:root:not(.dark-mode) .dropdown-search-dropdown .dropdown-search-item:hover,:root:not(.dark-mode) .dropdown-search-dropdown .dropdown-search-item:focus{background-color:var(--au-2)}
+:root:not(.dark-mode) .item-list-row{border-color:var(--au-line)}
+:root:not(.dark-mode) .item-list-row:hover{background-color:var(--au-1)}
+:root:not(.dark-mode) .scroll-box{border-color:var(--au-line)}
+:root:not(.dark-mode) .scroll-box{background-color:var(--au-4)}
+:root:not(.dark-mode) .scroll-box-item{border-color:var(--au-line)}
+:root:not(.dark-mode) .scroll-box-item{background-color:var(--au-3)}
+:root:not(.dark-mode) .scroll-box-item:hover{background-color:var(--au-1)}
+:root:not(.dark-mode) input.scroll-box-search,:root:not(.dark-mode) .scroll-box-header-item{border-color:var(--au-line)}
+:root:not(.dark-mode) input.scroll-box-search,:root:not(.dark-mode) .scroll-box-header-item{background-color:var(--au-3)}
+:root:not(.dark-mode) details.section-expander summary{border-color:var(--au-line)}
+:root:not(.dark-mode) details.section-expander{border-color:var(--au-line)}
+:root:not(.dark-mode) header{border-bottom-color:var(--au-line)}
+:root:not(.dark-mode) header .search-box.search-active:focus-within input{background-color:var(--au-4)}
+:root:not(.dark-mode) header .search-box.search-active:focus-within input{border-color:var(--au-line)}
+:root:not(.dark-mode) header .search-box.search-active:focus-within #header-search-box-button,:root:not(.dark-mode) header .search-box.search-active:focus-within input{color:var(--au-text)}
+@media screen and (max-width: 1000px){
+:root:not(.dark-mode) header .header-links{background-color:var(--au-3)}
+:root:not(.dark-mode) header .links a,:root:not(.dark-mode) header .dropdown-container ul li a,:root:not(.dark-mode) header .dropdown-container ul li button{color:var(--au-text)}
+:root:not(.dark-mode) header .links a:focus,:root:not(.dark-mode) header .dropdown-container ul li a:focus,:root:not(.dark-mode) header .dropdown-container ul li button:focus{background-color:var(--au-4)}
+}
+:root:not(.dark-mode) .tri-layout-mobile-tabs{border-bottom-color:var(--au-line)}
+:root:not(.dark-mode) .tri-layout-mobile-tab{background-color:var(--au-3)}
+:root:not(.dark-mode) .tri-layout-mobile-tab{border-bottom-color:var(--au-line-strong)}
+:root:not(.dark-mode) .tri-layout-mobile-tab:first-child{border-inline-end-color:var(--au-line)}
+:root:not(.dark-mode) .sidebar-page-nav li:not(.current-heading) .sidebar-page-nav-bullet{background-color:var(--au-text-disabled) !important}
+:root:not(.dark-mode) .sidebar-page-nav .sidebar-page-nav-bullet{box-shadow:0 0 0 6px var(--au-2)}
+:root:not(.dark-mode) .sortable-page-list li{background-color:var(--au-3)}
+:root:not(.dark-mode) .sortable-page-list li{border-color:var(--au-line)}
+:root:not(.dark-mode) ul.pagination a,:root:not(.dark-mode) ul.pagination span{color:var(--au-text-muted)}
+:root:not(.dark-mode) ul.pagination a,:root:not(.dark-mode) ul.pagination span{border-color:var(--au-line-strong)}
+:root:not(.dark-mode) ul.pagination li.active span{color:var(--au-text-strong)}
+:root:not(.dark-mode) .entity-list-item:focus,:root:not(.dark-mode) .icon-list-item:focus{background-color:var(--au-4)}
+:root:not(.dark-mode) .icon-list-item-dropdown-toggle{color:var(--au-text-secondary)}
+:root:not(.dark-mode) .card .entity-list-item:not(.no-hover,.book-contents .entity-list-item):hover{background-color:var(--au-2)}
+:root:not(.dark-mode) .dropdown-menu{background-color:var(--au-3)}
+:root:not(.dark-mode) .dropdown-menu{color:var(--au-text-muted)}
+:root:not(.dark-mode) .dropdown-menu .icon-item,:root:not(.dark-mode) .dropdown-menu .text-item,:root:not(.dark-mode) .dropdown-menu .label-item{color:var(--au-text-muted)}
+:root:not(.dark-mode) .active-link-list a:not(.active){color:var(--au-text)}
+:root:not(.dark-mode) .page-editor-page-area{background-color:var(--au-3)}
+:root:not(.dark-mode) .pointer{border-color:var(--au-line-strong)}
+:root:not(.dark-mode) .pointer{background-color:var(--au-3)}
+:root:not(.dark-mode) .pointer:before{background-color:var(--au-3)}
+:root:not(.dark-mode) .pointer:before{border-color:var(--au-line-strong)}
+:root:not(.dark-mode) .pointer input{border-color:var(--au-line)}
+:root:not(.dark-mode) .pointer .text-button{color:var(--au-text)}
+:root:not(.dark-mode) .pointer .button{border-color:var(--au-line)}
+:root:not(.dark-mode) .content-comment-window{background-color:var(--au-3)}
+:root:not(.dark-mode) .floating-toolbox{background-color:var(--au-3)}
+:root:not(.dark-mode) .floating-toolbox .tabs{border-inline-end-color:var(--au-line)}
+:root:not(.dark-mode) .floating-toolbox .tabs-inner{background-color:var(--au-3)}
+:root:not(.dark-mode) .page-content details{border-color:var(--au-line)}
+:root:not(.dark-mode) .page-content details>summary{background-color:var(--au-4)}
+:root:not(.dark-mode) .page-content details[open]>summary{border-color:var(--au-line)}
+:root:not(.dark-mode) .callout.success{border-color:var(--color-positive)}
+:root:not(.dark-mode) .callout.success{background-color:color-mix(in srgb, var(--color-positive) 10%, var(--au-3))}
+:root:not(.dark-mode) .callout.success{color:color-mix(in srgb, var(--color-positive) 60%, var(--au-text-strong))}
+:root:not(.dark-mode) .callout.danger{border-color:var(--color-negative)}
+:root:not(.dark-mode) .callout.danger{background-color:color-mix(in srgb, var(--color-negative) 10%, var(--au-3))}
+:root:not(.dark-mode) .callout.danger{color:color-mix(in srgb, var(--color-negative) 60%, var(--au-text-strong))}
+:root:not(.dark-mode) .callout.info{border-color:var(--color-info)}
+:root:not(.dark-mode) .callout.info{background-color:color-mix(in srgb, var(--color-info) 10%, var(--au-3))}
+:root:not(.dark-mode) .callout.info{color:color-mix(in srgb, var(--color-info) 60%, var(--au-text-strong))}
+:root:not(.dark-mode) .callout.warning{border-color:var(--color-warning)}
+:root:not(.dark-mode) .callout.warning{background-color:color-mix(in srgb, var(--color-warning) 10%, var(--au-3))}
+:root:not(.dark-mode) .callout.warning{color:color-mix(in srgb, var(--color-warning) 60%, var(--au-text-strong))}
+:root:not(.dark-mode) .avatar{background-color:var(--au-4)}
+:root:not(.dark-mode) .entity-selector{border-color:var(--au-line)}
+:root:not(.dark-mode) .entity-selector .entity-list{background-color:var(--au-4)}
+:root:not(.dark-mode) .entity-selector .entity-list-item{background-color:var(--au-3)}
+:root:not(.dark-mode) .list-sort-container .list-sort{border-color:var(--au-line)}
+:root:not(.dark-mode) .list-sort-container .list-sort-label,:root:not(.dark-mode) .list-sort-container .list-sort-toggle{color:var(--au-text-muted)}
+:root:not(.dark-mode) .list-sort-container .list-sort-dir{border-color:var(--au-line)}
+:root:not(.dark-mode) .sticky-sidebar .sticky-sidebar-header{background:var(--au-2);background:linear-gradient(180deg, var(--au-2) 80%, transparent 100%)}
+
+/* ── Feinschliff (steht hinten, damit er die generierten Regeln überschreibt) ── */
+
+/* Kopfleiste: ruhige Fläche statt vollflächig Akzent */
+:root:not(.au) #header { background-color: var(--au-0) !important; border-bottom: 1px solid var(--au-line); }
+:root:not(.au) #header .logo-text { color: var(--au-text-strong); }
+:root:not(.au) #header .links a, :root:not(.au) #header .user-name { color: var(--au-text-muted); }
+:root:not(.au) #header .links a:hover, :root:not(.au) #header .user-name:hover {
+  background-color: var(--color-primary-light); color: var(--au-accent-text);
+}
+:root:not(.au) #header .search-box input {
+  background-color: color-mix(in srgb, var(--au-text) 4%, transparent); border-color: var(--au-line-strong); color: var(--au-text);
+}
+:root:not(.au) #header .search-box.search-active:focus-within input { background-color: var(--au-4); }
+/* BookStack färbt Suchsymbol und Platzhalter hell weiß (für die Akzent-Kopfleiste) */
+:root:not(.dark-mode) #header-search-box-button,
+:root:not(.dark-mode) #header .search-box input::placeholder { color: var(--au-text-secondary); opacity: 1; }
+
+/* Weitere vollflächige Akzentbalken nur getönt */
+:root:not(.au) .editor-modal-header,
+:root:not(.au) .content-comment-window-actions {
+  background-color: color-mix(in srgb, var(--au-accent) 16%, var(--au-5));
+  color: var(--au-text-strong);
+}
+
+/* Karten */
+:root:not(.au) .card {
+  border: 1px solid var(--au-line);
+  border-radius: 14px;
+  box-shadow: var(--au-shadow);
+}
+:root:not(.au) .grid-card { border-radius: 14px; }
+:root:not(.au) .grid-card:hover { box-shadow: var(--au-glow); }
+
+/* Cover-Platzhalter ohne Bild: Typfarbe nur als Tönung, Icon in voller Typfarbe */
+:root:not(.au) .featured-image-container.bg-bookshelf, :root:not(.au) .featured-image-container-wrap .bg-bookshelf { --au-type: var(--color-bookshelf); }
+:root:not(.au) .featured-image-container.bg-book, :root:not(.au) .featured-image-container-wrap .bg-book { --au-type: var(--color-book); }
+:root:not(.au) .featured-image-container.bg-chapter, :root:not(.au) .featured-image-container-wrap .bg-chapter { --au-type: var(--color-chapter); }
+:root:not(.au) .featured-image-container:is(.bg-bookshelf, .bg-book, .bg-chapter),
+:root:not(.au) .featured-image-container-wrap :is(.bg-bookshelf, .bg-book, .bg-chapter) {
+  background-color: color-mix(in srgb, var(--au-type) 14%, var(--au-4));
+  border-bottom: 1px solid var(--au-line);
+}
+:root:not(.au) .featured-image-container-wrap:has(:is(.bg-bookshelf, .bg-book, .bg-chapter)) .svg-icon { color: var(--au-type); }
+:root:not(.au) .featured-image-container-wrap:has(.bg-bookshelf) .svg-icon { --au-type: var(--color-bookshelf); }
+:root:not(.au) .featured-image-container-wrap:has(.bg-book) .svg-icon { --au-type: var(--color-book); }
+:root:not(.au) .featured-image-container-wrap:has(.bg-chapter) .svg-icon { --au-type: var(--color-chapter); }
+
+/* Buttons: Hover = leichter Glow */
+:root:not(.au) .button:not(.outline):hover,
+:root:not(.au) .editor-form-action-primary:hover { box-shadow: var(--au-glow); }
+:root:not(.au) .button.outline:hover { border-color: var(--au-accent); color: var(--au-accent-text); }
+
+/* Fokus, Auswahl, Scrollbar */
+:root:not(.au) ::selection { background: color-mix(in srgb, var(--au-accent) 35%, transparent); }
+:root:not(.au) input:focus, :root:not(.au) textarea:focus, :root:not(.au) select:focus {
+  border-color: var(--au-accent); outline-color: color-mix(in srgb, var(--au-accent) 45%, transparent);
+}
+:root:not(.au) { scrollbar-color: var(--au-scrollbar) transparent; }
+
+/* Layout: breitere Inhaltsspalte auf großen Bildschirmen
+   (BookStack-Standard: Karte 940px, Text 840px). Breite hier anpassen. */
+:root { --au-content-width: 1240px; }
+@media screen and (min-width: 1701px) {
+  body .tri-layout-middle-contents { max-width: var(--au-content-width); }
+  body .page-content { max-width: calc(var(--au-content-width) - 100px); }
+}
+
+/* Fortschrittsbalken (Upload): Verlauf A → B */
+:root:not(.au) .dropzone-file-item-progress { background: linear-gradient(120deg, var(--au-accent), var(--au-accent-2)); }
+</style>

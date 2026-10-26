@@ -1,7 +1,7 @@
 # Aurora – ein Look für alle Apps
 
 Deep-Space-Schwarz mit Aurora-Verlauf. Ursprünglich als TeamSpeak-Theme entstanden,
-jetzt einheitlich für TeamSpeak, Steam, Discord, VS Code, Raycast und Windows.
+jetzt einheitlich für TeamSpeak, Steam, Discord, VS Code, Raycast, BookStack und Windows.
 
 ## Palette
 
@@ -38,6 +38,7 @@ Akzent für Icon/Text, beim Hover leichter Glow.
 | `discord/`    | Discord (BetterDiscord) | `Aurora.theme.css` nach `%APPDATA%\BetterDiscord\themes`, Variante oben in der Datei |
 | `vscode/`     | VS Code    | `node build.js`, `npx @vscode/vsce package --allow-missing-repository --skip-license`, `code --install-extension aurora-theme-1.0.0.vsix` |
 | `raycast/`    | Raycast (Pro) | Import-Link aus [raycast/links.md](raycast/links.md) öffnen |
+| `bookstack/`  | BookStack (hell + dunkel) | Inhalt von `aurora-head.html` unter Einstellungen → Anpassung → *Benutzerdefinierter HTML-Head-Inhalt* einfügen – siehe [bookstack/README.md](bookstack/README.md) |
 | `windows/` (Stufe 2) | Windhawk | Mods *Windows 11 Taskbar / Start Menu / File Explorer / Settings / Notification Center Styler* installieren, dann `.\windows\windhawk.ps1 -Variant ice` (UAC) |
 | `windows/` (Explorer-Flächen) | Windhawk, lokaler Mod | `node windows\build-modernizer.js` erzeugt *Win32 UI Modernizer (Aurora)*; in Windhawk „Neuen Mod erstellen“, Inhalt einfügen, kompilieren – Einstellungen setzt `windhawk.ps1` |
 | `windows/` (Hintergrund) | Mica-Tönung | `.\windows\wallpaper.ps1 -Variant ice` – dunkles Aurora-Bild als Windows-Hintergrund (liegt unter Lively), Backup in `windows\backup` |
@@ -50,6 +51,7 @@ node steam\build.js --variant mint --install
 .\windows\apply.ps1 -Variant mint
 # VS Code: Strg+K Strg+T -> "Aurora Mint"
 # Discord: in Aurora.theme.css die Mint-Zeile aktivieren
+# BookStack: node bookstackuild.js --variant mint, dann aurora-head.html neu einfügen
 # TeamSpeak: "Aurora Mint" in den Theme-Einstellungen
 ```
 

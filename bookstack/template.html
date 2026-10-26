@@ -1,0 +1,151 @@
+<!-- Aurora für BookStack (geprüft gegen {{VERSION}}, erzeugt mit bookstack/build.js)
+     Einfügen unter: Einstellungen → Anpassung → "Benutzerdefinierter HTML-Head-Inhalt".
+     Wirkt im Hellen und im Dunklen Modus. Variante wechseln: nur die drei Zeilen unter "Variante" tauschen. -->
+<style id="aurora-theme">
+/* Geltungsbereiche – alle drei wiegen etwas mehr als BookStacks eigenes html.dark-mode:
+   :root.dark-mode        nur Dunkler Modus
+   :root:not(.dark-mode)  nur Heller Modus
+   :root:not(.au)         beide Modi */
+:root:not(.au) {
+{{VARIANT}}
+
+  --editor-color-primary: var(--au-accent);
+  --color-link: var(--au-accent-text);
+  --font-body: "Segoe UI Variable Text", "Segoe UI", sans-serif;
+  --font-heading: var(--font-body);
+}
+
+/* Hell: kühles Weiß, Text in Deep-Space-Tönen, Akzent für Text abgedunkelt */
+:root:not(.dark-mode) {
+  --au-0: #ffffff; --au-1: #f7f8fb; --au-2: #f1f3f8;
+  --au-3: #ffffff; --au-4: #eceff5; --au-5: #e3e7ef;
+  --au-line: rgba(16,22,40,.09);
+  --au-line-strong: rgba(16,22,40,.16);
+  --au-text-strong: #0e1220; --au-text: #262b3a; --au-text-muted: #4a5165;
+  --au-text-secondary: #646b80; --au-text-disabled: #9aa0b1;
+  --au-accent-text: color-mix(in srgb, var(--au-accent) 70%, #000);
+  --au-glow: 0 0 0 1px color-mix(in srgb, var(--au-accent) 40%, transparent),
+             0 6px 20px -8px color-mix(in srgb, var(--au-accent) 45%, transparent);
+  --au-shadow: 0 1px 2px rgba(16,22,40,.04), 0 10px 30px -14px rgba(16,22,40,.22);
+  --au-scrollbar: #c9cfdb;
+
+  /* Weiße Schrift auf Buttons braucht hell den dunkleren Akzent */
+  --color-primary: var(--au-accent-text);
+  --color-primary-light: color-mix(in srgb, var(--au-accent) 12%, transparent);
+  /* Inhaltstypen: dieselben Farbfamilien wie dunkel, kräftiger für hellen Grund */
+  --color-bookshelf: #db2777;
+  --color-book: #0d9488;
+  --color-chapter: #ea580c;
+  --color-page: #2563eb;
+  --color-page-draft: #7c3aed;
+  --color-positive: #059669;
+  --color-warning: #d97706;
+  --color-negative: #e11d48;
+  --color-info: #2563eb;
+}
+
+/* Dunkel: Deep Space */
+:root.dark-mode {
+  --au-0: #06070b; --au-1: #0a0c12; --au-2: #0e1118;
+  --au-3: #12151e; --au-4: #171b26; --au-5: #1d2230;
+  --au-line: rgba(255,255,255,.06);
+  --au-line-strong: rgba(255,255,255,.10);
+  --au-text-strong: #eceef4; --au-text: #e6e8ef; --au-text-muted: #a3a9ba;
+  --au-text-secondary: #7d8499; --au-text-disabled: #565d70;
+  --au-accent-text: var(--au-accent-light);
+  --au-glow: 0 0 0 1px color-mix(in srgb, var(--au-accent) 45%, transparent),
+             0 6px 24px -6px color-mix(in srgb, var(--au-accent) 55%, transparent);
+  --au-shadow: 0 18px 50px -12px rgba(0,0,0,.7);
+  --au-scrollbar: #2a3040;
+
+  --color-primary: var(--au-accent);
+  --color-primary-light: color-mix(in srgb, var(--au-accent) 15%, transparent);
+  /* Inhaltstypen: die fünf hellen Aurora-Akzente */
+  --color-bookshelf: #f9a8d4;
+  --color-book: #99f6e4;
+  --color-chapter: #fdba74;
+  --color-page: #93c5fd;
+  --color-page-draft: #c4b5fd;
+  --color-positive: #34d399;
+  --color-warning: #fbbf24;
+  --color-negative: #f43f5e;
+  --color-info: #93c5fd;
+}
+
+/* ── Generiert aus BookStacks styles.css: feste Dark-Mode-Grautöne → Aurora ── */
+{{DARK}}
+
+/* ── Generiert aus BookStacks styles.css: feste Grautöne des Hellen Modus → Aurora ── */
+{{LIGHT}}
+:root:not(.dark-mode) .sticky-sidebar .sticky-sidebar-header{background:var(--au-2);background:linear-gradient(180deg, var(--au-2) 80%, transparent 100%)}
+
+/* ── Feinschliff (steht hinten, damit er die generierten Regeln überschreibt) ── */
+
+/* Kopfleiste: ruhige Fläche statt vollflächig Akzent */
+:root:not(.au) #header { background-color: var(--au-0) !important; border-bottom: 1px solid var(--au-line); }
+:root:not(.au) #header .logo-text { color: var(--au-text-strong); }
+:root:not(.au) #header .links a, :root:not(.au) #header .user-name { color: var(--au-text-muted); }
+:root:not(.au) #header .links a:hover, :root:not(.au) #header .user-name:hover {
+  background-color: var(--color-primary-light); color: var(--au-accent-text);
+}
+:root:not(.au) #header .search-box input {
+  background-color: color-mix(in srgb, var(--au-text) 4%, transparent); border-color: var(--au-line-strong); color: var(--au-text);
+}
+:root:not(.au) #header .search-box.search-active:focus-within input { background-color: var(--au-4); }
+/* BookStack färbt Suchsymbol und Platzhalter hell weiß (für die Akzent-Kopfleiste) */
+:root:not(.dark-mode) #header-search-box-button,
+:root:not(.dark-mode) #header .search-box input::placeholder { color: var(--au-text-secondary); opacity: 1; }
+
+/* Weitere vollflächige Akzentbalken nur getönt */
+:root:not(.au) .editor-modal-header,
+:root:not(.au) .content-comment-window-actions {
+  background-color: color-mix(in srgb, var(--au-accent) 16%, var(--au-5));
+  color: var(--au-text-strong);
+}
+
+/* Karten */
+:root:not(.au) .card {
+  border: 1px solid var(--au-line);
+  border-radius: 14px;
+  box-shadow: var(--au-shadow);
+}
+:root:not(.au) .grid-card { border-radius: 14px; }
+:root:not(.au) .grid-card:hover { box-shadow: var(--au-glow); }
+
+/* Cover-Platzhalter ohne Bild: Typfarbe nur als Tönung, Icon in voller Typfarbe */
+:root:not(.au) .featured-image-container.bg-bookshelf, :root:not(.au) .featured-image-container-wrap .bg-bookshelf { --au-type: var(--color-bookshelf); }
+:root:not(.au) .featured-image-container.bg-book, :root:not(.au) .featured-image-container-wrap .bg-book { --au-type: var(--color-book); }
+:root:not(.au) .featured-image-container.bg-chapter, :root:not(.au) .featured-image-container-wrap .bg-chapter { --au-type: var(--color-chapter); }
+:root:not(.au) .featured-image-container:is(.bg-bookshelf, .bg-book, .bg-chapter),
+:root:not(.au) .featured-image-container-wrap :is(.bg-bookshelf, .bg-book, .bg-chapter) {
+  background-color: color-mix(in srgb, var(--au-type) 14%, var(--au-4));
+  border-bottom: 1px solid var(--au-line);
+}
+:root:not(.au) .featured-image-container-wrap:has(:is(.bg-bookshelf, .bg-book, .bg-chapter)) .svg-icon { color: var(--au-type); }
+:root:not(.au) .featured-image-container-wrap:has(.bg-bookshelf) .svg-icon { --au-type: var(--color-bookshelf); }
+:root:not(.au) .featured-image-container-wrap:has(.bg-book) .svg-icon { --au-type: var(--color-book); }
+:root:not(.au) .featured-image-container-wrap:has(.bg-chapter) .svg-icon { --au-type: var(--color-chapter); }
+
+/* Buttons: Hover = leichter Glow */
+:root:not(.au) .button:not(.outline):hover,
+:root:not(.au) .editor-form-action-primary:hover { box-shadow: var(--au-glow); }
+:root:not(.au) .button.outline:hover { border-color: var(--au-accent); color: var(--au-accent-text); }
+
+/* Fokus, Auswahl, Scrollbar */
+:root:not(.au) ::selection { background: color-mix(in srgb, var(--au-accent) 35%, transparent); }
+:root:not(.au) input:focus, :root:not(.au) textarea:focus, :root:not(.au) select:focus {
+  border-color: var(--au-accent); outline-color: color-mix(in srgb, var(--au-accent) 45%, transparent);
+}
+:root:not(.au) { scrollbar-color: var(--au-scrollbar) transparent; }
+
+/* Layout: breitere Inhaltsspalte auf großen Bildschirmen
+   (BookStack-Standard: Karte 940px, Text 840px). Breite hier anpassen. */
+:root { --au-content-width: 1240px; }
+@media screen and (min-width: 1701px) {
+  body .tri-layout-middle-contents { max-width: var(--au-content-width); }
+  body .page-content { max-width: calc(var(--au-content-width) - 100px); }
+}
+
+/* Fortschrittsbalken (Upload): Verlauf A → B */
+:root:not(.au) .dropzone-file-item-progress { background: linear-gradient(120deg, var(--au-accent), var(--au-accent-2)); }
+</style>
