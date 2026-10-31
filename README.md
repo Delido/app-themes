@@ -38,6 +38,7 @@ Akzent für Icon/Text, beim Hover leichter Glow.
 | `discord/`    | Discord (BetterDiscord) | `Aurora.theme.css` nach `%APPDATA%\BetterDiscord\themes`, Variante oben in der Datei |
 | `vscode/`     | VS Code    | `node build.js`, `npx @vscode/vsce package --allow-missing-repository --skip-license`, `code --install-extension aurora-theme-1.0.0.vsix` |
 | `powertoys/`  | PowerToys  | `.\powertoys\apply.ps1 -Variant ice` – färbt FancyZones, Maus-Werkzeuge und Bildschirmlineal (Rest folgt dem Windows-Akzent), Backup in `powertoys\backup`, zurück mit `restore.ps1` |
+| `terminal/`   | Windows Terminal | `node terminal\build.js --variant ice --install` – Farbschema + Tab-Leiste für alle Varianten, Backup in `terminal\backup` |
 | `raycast/`    | Raycast (Pro) | Import-Link aus [raycast/links.md](raycast/links.md) öffnen |
 | `bookstack/`  | BookStack (hell + dunkel) | Inhalt von `aurora-head.html` unter Einstellungen → Anpassung → *Benutzerdefinierter HTML-Head-Inhalt* einfügen – siehe [bookstack/README.md](bookstack/README.md) |
 | `windows/` (Stufe 2) | Windhawk | Mods *Windows 11 Taskbar / Start Menu / File Explorer / Settings / Notification Center Styler* installieren, dann `.\windows\windhawk.ps1 -Variant ice` (UAC) |
@@ -51,6 +52,7 @@ Akzent für Icon/Text, beim Hover leichter Glow.
 node steam\build.js --variant mint --install
 .\windows\apply.ps1 -Variant mint
 .\powertoys\apply.ps1 -Variant mint
+node terminal\build.js --variant mint --install
 # VS Code: Strg+K Strg+T -> "Aurora Mint"
 # Discord: in Aurora.theme.css die Mint-Zeile aktivieren
 # BookStack: node bookstackuild.js --variant mint, dann aurora-head.html neu einfügen

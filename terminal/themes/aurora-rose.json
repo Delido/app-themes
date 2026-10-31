@@ -1,0 +1,41 @@
+{
+  "scheme": {
+    "name": "Aurora Rose",
+    "background": "#0a0c12",
+    "foreground": "#d8dbe5",
+    "cursorColor": "#a855f7",
+    "selectionBackground": "#ec4899",
+    "black": "#12151e",
+    "red": "#fb7185",
+    "green": "#34d399",
+    "yellow": "#fbbf24",
+    "blue": "#60a5fa",
+    "purple": "#c084fc",
+    "cyan": "#22d3ee",
+    "white": "#d8dbe5",
+    "brightBlack": "#4c5263",
+    "brightRed": "#fda4af",
+    "brightGreen": "#6ee7b7",
+    "brightYellow": "#fde68a",
+    "brightBlue": "#93c5fd",
+    "brightPurple": "#d8b4fe",
+    "brightCyan": "#67e8f9",
+    "brightWhite": "#ffffff"
+  },
+  "theme": {
+    "name": "Aurora Rose",
+    "window": {
+      "applicationTheme": "dark",
+      "useMica": false
+    },
+    "tabRow": {
+      "background": "#06070b",
+      "unfocusedBackground": "#06070b"
+    },
+    "tab": {
+      "background": "terminalBackground",
+      "unfocusedBackground": "#06070b",
+      "showCloseButton": "hover"
+    }
+  }
+}
