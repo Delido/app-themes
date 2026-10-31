@@ -1,6 +1,7 @@
 /* ==========================================================
-   Nocturne - Basis (handgeschrieben, wird vor die generierten Overrides gesetzt)
+   Nocturne - Basis (handgeschrieben, wird nach den generierten Overrides gesetzt)
    Die --nc-* Farben setzt build.js passend zur gewaehlten Aurora-Variante.
+   Doppelt geschweifte Klassennamen (optional mit @Nachbar) loest build.js in Steams Hashes auf.
    ========================================================== */
 
 html, body {
@@ -38,7 +39,7 @@ body::before {
 
 /* Eingabefelder */
 input, textarea, select {
-  background: var(--nc-bg1) !important;
+  background-color: var(--nc-bg1) !important; /* nur die Farbe: Steam zeichnet Lupen o.ae. als background-image */
   color: var(--nc-text) !important;
   border: 1px solid var(--nc-line) !important;
   border-radius: 8px !important;
@@ -50,8 +51,9 @@ input:focus, textarea:focus, select:focus {
   box-shadow: 0 0 0 3px var(--nc-accent-18) !important;
 }
 
-/* Tastatur-Fokus: dezenter Ring in Akzentfarbe */
-:focus-visible {
+/* Tastatur-Fokus: dezenter Ring in Akzentfarbe - nur an Bedienelementen, sonst
+   umrandet Steam ganze Listen, sobald sie den Fokus haben */
+button:focus-visible, a:focus-visible, [role="button"]:focus-visible {
   outline: 1px solid var(--nc-accent) !important;
   outline-offset: 2px;
 }
@@ -69,4 +71,110 @@ img[src*="capsule"] {
 /* Sanfte Uebergaenge */
 button, [role="button"], [role="link"] {
   transition: background-color .15s ease, color .15s ease, filter .15s ease;
+}
+
+/* ---- Avatare: ueberall die gleiche Form -------------------------------------
+   Rund schneidet Steam-Punkte-Rahmen ab, deshalb ein leicht abgerundetes Quadrat,
+   auch fuer Avatare mit Rahmen - so sieht die Freundesliste einheitlich aus. */
+img[src*="avatars."],
+img.avatar,
+.{{avatar@avatarHolder}},
+.{{playerAvatar@miniProfile}} img,
+.{{avatarFrameImg}} {
+  border-radius: 22% !important;
+}
+
+/* ---- Obere Navigation (Shop / Bibliothek / Community) ------------------------ */
+.{{MenuButton@SuperNavMenu}} {
+  color: var(--nc-muted) !important;
+  text-shadow: none !important;
+  position: relative;
+}
+.{{MenuButton@SuperNavMenu}}:hover { color: var(--nc-text) !important; }
+.{{MenuButton@SuperNavMenu}}.{{Selected@SuperNavMenu}} {
+  color: #fff !important;
+  border-bottom: none !important;
+}
+.{{MenuButton@SuperNavMenu}}.{{Selected@SuperNavMenu}}::after {
+  content: "";
+  position: absolute;
+  left: 2px; right: 2px; bottom: -3px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--nc-grad);
+}
+
+/* ---- Suche ueber der Spieleliste: eine Flaeche, Feld darin transparent ---- */
+.{{Container@SearchInput}} {
+  background-color: var(--nc-bg2) !important;
+  border: 1px solid var(--nc-line);
+  border-radius: 8px !important;
+}
+.{{Container@SearchInput}} .{{SearchInput@SearchFilterInputClear}} .DialogTextInputBase {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+.{{Container@SearchInput}} .{{SearchInput@SearchFilterInputClear}} .DialogTextInputBase::placeholder { color: var(--nc-muted); font-style: normal; }
+
+/* ---- Startseite / Sammlungen-Schalter ----------------------------------------- */
+.{{HomeBox}},
+.{{CollectionsButton}} {
+  background: var(--nc-bg2) !important;
+  border: 1px solid var(--nc-line) !important;
+  border-radius: 8px !important;
+  box-shadow: none !important;
+}
+.{{HomeBox}} svg { display: none; } /* grosses Haus-Symbol wirkte wie ein Wasserzeichen */
+.{{HomeBox}}:hover,
+.{{CollectionsButton}}:hover { background: var(--nc-bg3) !important; }
+
+/* ---- Spieleliste: ruhige Kategorie-Ueberschriften ----------------------------- */
+.{{Container@SectionHeaderContent}} {
+  background: transparent !important;
+  margin-top: 6px;
+}
+.{{Container@SectionHeaderContent}}:hover .{{SectionName@SectionHeaderContent}} { color: var(--nc-text) !important; }
+.{{SectionName@SectionHeaderContent}} {
+  color: var(--nc-muted) !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  letter-spacing: .08em;
+}
+.{{SectionCount@SectionHeaderContent}} {
+  color: var(--nc-muted) !important;
+  opacity: .55;
+  font-size: 11px !important;
+}
+
+/* ---- Spieleliste: Eintraege ---------------------------------------------------- */
+.{{Container@GameListEntryName}} {
+  border-radius: 6px;
+}
+.{{Container@GameListEntryName}}:hover { background: rgba(255, 255, 255, .04) !important; }
+.{{HoverOverlay@GameListEntryName}} { background: transparent !important; }
+.{{Container@GameListEntryName}}.{{Selected@GameListEntryName}} {
+  background: var(--nc-accent-18) !important;
+  box-shadow: inset 2px 0 0 var(--nc-accent) !important;
+}
+.{{Container@GameListEntryName}}.{{Selected@GameListEntryName}} .{{GameListEntryName}} { color: #fff !important; }
+.{{Container@GameListEntryName}}.{{Running@GameListEntryName}} .{{GameListEntryName}} { color: var(--nc-accent-b) !important; }
+.{{GameIcon@GameListEntryName}} { border-radius: 4px; }
+
+/* ---- Kontextmenues --------------------------------------------------------------- */
+.{{contextMenuContents@PopoutSubMenu}} {
+  background: var(--nc-bg2) !important;
+  border: 1px solid var(--nc-line) !important;
+  border-radius: 10px !important;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, .55) !important;
+  padding: 4px !important;
+}
+.{{contextMenuItem@PopoutSubMenu}} {
+  border-radius: 6px !important;
+  color: var(--nc-text) !important;
+}
+.{{contextMenuItem@PopoutSubMenu}}:hover,
+.{{contextMenuItem@PopoutSubMenu}}.{{active@PopoutSubMenu}} {
+  background: var(--nc-accent-18) !important;
+  color: #fff !important;
 }

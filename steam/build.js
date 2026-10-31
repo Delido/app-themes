@@ -120,6 +120,7 @@ function* parseRules(css) {
   let i = 0, start = 0;
   while (i < css.length) {
     const ch = css[i];
+    if (ch === '\\') { i += 2; continue; } // maskierte Zeichen wie "KeyTheme_\{" sind Teil des Selektors
     if (ch === '"' || ch === "'") {
       const end = css.indexOf(ch, i + 1);
       i = end < 0 ? css.length : end + 1;
@@ -136,6 +137,7 @@ function* parseRules(css) {
       let depth = 1, j = i + 1;
       while (j < css.length && depth > 0) {
         const c = css[j];
+        if (c === '\\') { j += 2; continue; }
         if (c === '"' || c === "'") { const e = css.indexOf(c, j + 1); j = e < 0 ? css.length : e + 1; continue; }
         if (c === '{') depth++;
         else if (c === '}') depth--;
@@ -168,6 +170,38 @@ function splitDecls(body) {
   return decls;
 }
 
+// ---- Klassennamen aufloesen ----------------------------------------------------------
+// Steams JS enthaelt Objekte wie {GameListEntryName:"_2SXJ...",Selected:"_1UBp..."}.
+// In base.css steht {{Name}} bzw. {{Name@Nachbar}} (Name aus dem Objekt, das auch Nachbar enthaelt)
+// und wird hier durch den aktuellen Hash ersetzt - so ueberleben die Regeln Steam-Updates.
+function loadClassMaps() {
+  const dir = path.join(STEAM, 'steamui');
+  const maps = [];
+  for (const f of fs.readdirSync(dir).filter(f => f.endsWith('.js'))) {
+    const js = fs.readFileSync(path.join(dir, f), 'utf8');
+    for (const m of js.matchAll(/\{((?:[\w$]+|"[^"]*"):"[^"]*"(?:,(?:[\w$]+|"[^"]*"):"[^"]*")*)\}/g)) {
+      const o = {};
+      for (const p of m[1].matchAll(/([\w$]+|"[^"]*"):"([^"]*)"/g)) o[p[1].replace(/"/g, '')] = p[2];
+      maps.push(o);
+    }
+  }
+  return maps;
+}
+
+function resolveClasses(css) {
+  if (!css.includes('{{')) return css;
+  const maps = loadClassMaps();
+  const missing = [];
+  const out = css.replace(/\{\{([\w-]+)(?:@([\w-]+))?\}\}/g, (m, key, anchor) => {
+    const hits = new Set(maps.filter(o => key in o && (!anchor || anchor in o)).map(o => o[key]));
+    if (hits.size === 1) return [...hits][0];
+    missing.push(`${m} (${hits.size} Treffer)`);
+    return `nc-missing-${key}`; // trifft nichts, die Regel bleibt wirkungslos statt falsch
+  });
+  if (missing.length) console.warn(`Nicht eindeutig aufgeloest: ${missing.join(', ')}`);
+  return out;
+}
+
 // ---- Generierung -----------------------------------------------------------------
 function generate() {
   const files = fs.readdirSync(SRC_DIR).filter(f => f.endsWith('.css'));
@@ -185,7 +219,11 @@ function generate() {
         const value = d.slice(idx + 1).replace(/!important/i, '').trim();
         if (value.includes('var(')) continue;
         const mapped = mapValue(value);
-        if (mapped) changed.push(`${prop}:${mapped}!important`);
+        if (!mapped) continue;
+        // "background: <Farbe>" als !important wuerde auch Steams background-image (Lupe, Icons)
+        // aus spezifischeren Regeln loeschen - reine Farben deshalb nur als background-color
+        const plainColor = prop === 'background' && !/gradient|url\(/i.test(mapped);
+        changed.push(`${plainColor ? 'background-color' : prop}:${mapped}!important`);
       }
       if (!changed.length) continue;
       let block = `${rule.selector}{${changed.join(';')}}`;
@@ -222,9 +260,10 @@ function paletteCss() {
 
 const { css, count, files } = generate();
 const stamp = `generiert von build.js am ${new Date().toISOString().slice(0, 10)}, Variante ${VARIANT}`;
-const base = fs.readFileSync(path.join(HERE, 'base.css'), 'utf8');
+const base = resolveClasses(fs.readFileSync(path.join(HERE, 'base.css'), 'utf8'));
 const result = `/* Nocturne - ${stamp}, aus ${files} Steam-CSS-Dateien (${count} Regeln). Nicht von Hand bearbeiten, base.css aendern. */\n`
-  + paletteCss() + base + '\n/* ---- generierte Farb-Overrides ---- */\n' + css + '\n';
+  + paletteCss() + '\n/* ---- generierte Farb-Overrides ---- */\n' + css
+  + '\n\n/* ---- base.css (zuletzt, damit sie die generierten Farben schlagen kann) ---- */\n' + base + '\n';
 
 for (const name of ['libraryroot.custom.css', 'friends.custom.css']) {
   fs.writeFileSync(path.join(HERE, name), result);

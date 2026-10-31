@@ -15,7 +15,9 @@ eigene CSS-Variablen greifen dort kaum. `build.js` liest deshalb Steams CSS
 (`steamui\css\*.css`), rechnet jede Farbe auf die Aurora-Palette um und erzeugt
 `libraryroot.custom.css` / `friends.custom.css` / `webkit.css` (nicht im Repo).
 
-- `base.css` – handgeschriebener Teil (Scrollbars, Fokus, Auswahl …)
+- `base.css` – handgeschriebener Teil (Navigation, Spieleliste, Menüs, Avatare …).
+  Steam-Klassen stehen dort als `{{Name}}` bzw. `{{Name@Nachbar}}` (lesbarer Name aus
+  Steams JS); `build.js` setzt die aktuellen Hashes ein und warnt bei Mehrdeutigkeit.
 - `webkit.base.css` – Store & Community (handgeschrieben)
 - `build.js` – Generator, Varianten oben im Skript
 
