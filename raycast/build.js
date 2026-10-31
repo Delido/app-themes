@@ -13,6 +13,10 @@ const VARIANTS = {
   rose:   { name: 'Rose',   a: '#ec4899', b: '#a855f7' },
 };
 
+// Mischt Akzent und Flaeche wie color-mix(in srgb, a p%, bg) - Auswahl nur getoent, nie voll im Akzent
+const mix = (a, bg, p) => '#' + [1, 3, 5].map(i => Math.round(parseInt(a.slice(i, i + 2), 16) * p + parseInt(bg.slice(i, i + 2), 16) * (1 - p)).toString(16).padStart(2, '0')).join('');
+const BG = '#0e1118'; // --au-2, Haupt-Hintergrund wie VS Code / Windows
+
 const ORDER = ['background', 'backgroundSecondary', 'text', 'selection', 'loader',
   'red', 'orange', 'yellow', 'green', 'blue', 'purple', 'magenta'];
 
@@ -24,11 +28,11 @@ function theme(v) {
     name: `Aurora ${v.name}`,
     appearance: 'dark',
     colors: {
-      background: '#0a0c12',          // --au-1
-      backgroundSecondary: '#171b26', // --au-4
+      background: BG,
+      backgroundSecondary: '#12151e', // --au-3
       text: '#e6e8ef',
-      selection: v.a,
-      loader: v.b,
+      selection: mix(v.a, BG, 0.28),
+      loader: v.a,
       red: '#f43f5e',
       orange: '#fb923c',
       yellow: '#fbbf24',
